@@ -1,0 +1,1434 @@
+[2019-08-09 09:56:18,004] - [train.py line:143] : {'architecture': 'preresnet20', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'preresnet20', 'num_classes': 10, 'dataset': 'cifar10', 'use_gpu': True, 'input_size': 32, 'epochs': 250, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'cutmix': True, 'cutmix_alpha': 1.0, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.1, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+[2019-08-09 09:56:18,021] - [train.py line:147] : PreResNet(
+  (conv_1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (fc): Linear(in_features=64, out_features=10, bias=True)
+)
+[2019-08-09 09:56:18,024] - [train.py line:148] :  == total parameters: 272282
+[2019-08-09 09:56:41,242] - [train.py line:187] :             =======  Training  =======
+
+[2019-08-09 09:56:41,244] - [train.py line:36] :  === Epoch: [1/250] === 
+[2019-08-09 10:09:18,993] - [train.py line:143] : {'architecture': 'preresnet20', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'preresnet20', 'num_classes': 10, 'dataset': 'cifar10', 'use_gpu': True, 'input_size': 32, 'epochs': 250, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'cutmix': True, 'cutmix_alpha': 1.0, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.1, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+[2019-08-09 10:09:19,021] - [train.py line:147] : PreResNet(
+  (conv_1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (fc): Linear(in_features=64, out_features=10, bias=True)
+)
+[2019-08-09 10:09:19,024] - [train.py line:148] :  == total parameters: 272282
+[2019-08-09 10:09:41,466] - [train.py line:187] :             =======  Training  =======
+
+[2019-08-09 10:09:41,467] - [train.py line:36] :  === Epoch: [1/250] === 
+[2019-08-09 10:11:20,731] - [train.py line:142] : {'architecture': 'preresnet20', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'preresnet20', 'num_classes': 10, 'dataset': 'cifar10', 'use_gpu': True, 'input_size': 32, 'epochs': 250, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'cutmix': True, 'cutmix_alpha': 1.0, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.1, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+[2019-08-09 10:11:20,755] - [train.py line:146] : PreResNet(
+  (conv_1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (fc): Linear(in_features=64, out_features=10, bias=True)
+)
+[2019-08-09 10:11:20,758] - [train.py line:147] :  == total parameters: 272282
+[2019-08-09 10:11:42,137] - [train.py line:186] :             =======  Training  =======
+
+[2019-08-09 10:11:42,139] - [train.py line:36] :  === Epoch: [1/250] === 
+[2019-08-09 10:13:04,423] - [train.py line:135] : {'architecture': 'preresnet20', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'preresnet20', 'num_classes': 10, 'dataset': 'cifar10', 'use_gpu': True, 'input_size': 32, 'epochs': 250, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'cutmix': True, 'cutmix_alpha': 1.0, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.1, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+[2019-08-09 10:13:04,457] - [train.py line:139] : PreResNet(
+  (conv_1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (fc): Linear(in_features=64, out_features=10, bias=True)
+)
+[2019-08-09 10:13:04,460] - [train.py line:140] :  == total parameters: 272282
+[2019-08-09 10:13:34,519] - [train.py line:179] :             =======  Training  =======
+
+[2019-08-09 10:13:34,521] - [train.py line:37] :  === Epoch: [1/250] === 
+[2019-08-09 10:16:16,775] - [train.py line:135] : {'architecture': 'preresnet20', 'data_path': './data', 'ckpt_path': './', 'ckpt_name': 'preresnet20', 'num_classes': 10, 'dataset': 'cifar10', 'use_gpu': True, 'input_size': 32, 'epochs': 250, 'batch_size': 128, 'test_batch': 200, 'eval_freq': 2, 'workers': 4, 'optimize': {'momentum': 0.9, 'weight_decay': 0.0001, 'nesterov': True}, 'mixup': False, 'cutmix': True, 'cutmix_alpha': 1.0, 'augmentation': {'normalize': True, 'random_crop': True, 'random_horizontal_filp': True, 'cutout': False, 'holes': 1, 'length': 8}, 'lr_scheduler': {'type': 'STEP', 'base_lr': 0.1, 'lr_epochs': [100, 150, 200], 'lr_mults': 0.1, 'min_lr': 0.0, 'lower_bound': -6.0, 'upper_bound': 3.0}}
+[2019-08-09 10:16:16,793] - [train.py line:139] : PreResNet(
+  (conv_1): Conv2d(3, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+  (layer1): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(16, 16, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer2): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(16, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(16, 32, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(16, 32, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(32, 32, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (layer3): Sequential(
+    (0): BasicBlock(
+      (bn_1): BatchNorm2d(32, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(32, 64, kernel_size=(3, 3), stride=(2, 2), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (downsample): Sequential(
+        (0): Conv2d(32, 64, kernel_size=(1, 1), stride=(2, 2), bias=False)
+      )
+    )
+    (1): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+    (2): BasicBlock(
+      (bn_1): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (relu): ReLU(inplace)
+      (conv_1): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+      (bn_2): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+      (conv_2): Conv2d(64, 64, kernel_size=(3, 3), stride=(1, 1), padding=(1, 1), bias=False)
+    )
+  )
+  (bn): BatchNorm2d(64, eps=1e-05, momentum=0.1, affine=True, track_running_stats=True)
+  (relu): ReLU(inplace)
+  (avgpool): AvgPool2d(kernel_size=8, stride=8, padding=0)
+  (fc): Linear(in_features=64, out_features=10, bias=True)
+)
+[2019-08-09 10:16:16,796] - [train.py line:140] :  == total parameters: 272282
+[2019-08-09 10:16:41,161] - [train.py line:179] :             =======  Training  =======
+
+[2019-08-09 10:16:41,164] - [train.py line:37] :  === Epoch: [1/250] === 
+[2019-08-09 10:16:47,838] - [train.py line:73] :    == step: [100/391], train loss: 1.905 | train acc: 27.023% | lr: 0.100000
+[2019-08-09 10:16:51,370] - [train.py line:73] :    == step: [200/391], train loss: 1.750 | train acc: 33.219% | lr: 0.100000
+[2019-08-09 10:16:54,879] - [train.py line:73] :    == step: [300/391], train loss: 1.637 | train acc: 38.161% | lr: 0.100000
+[2019-08-09 10:16:59,842] - [train.py line:77] :    == step: [391/391], train loss: 1.542 | train acc: 42.118% | lr: 0.100000
+[2019-08-09 10:16:59,842] - [train.py line:80] :    == cost time: 18.6797s
+[2019-08-09 10:16:59,843] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:17:01,480] - [train.py line:110] :    == test loss: 1.490 | test acc: 47.410%
+[2019-08-09 10:17:01,537] - [train.py line:37] :  === Epoch: [2/250] === 
+[2019-08-09 10:17:06,116] - [train.py line:73] :    == step: [100/391], train loss: 1.140 | train acc: 58.508% | lr: 0.100000
+[2019-08-09 10:17:09,944] - [train.py line:73] :    == step: [200/391], train loss: 1.100 | train acc: 60.152% | lr: 0.100000
+[2019-08-09 10:17:13,838] - [train.py line:73] :    == step: [300/391], train loss: 1.063 | train acc: 61.615% | lr: 0.100000
+[2019-08-09 10:17:17,610] - [train.py line:77] :    == step: [391/391], train loss: 1.042 | train acc: 62.540% | lr: 0.100000
+[2019-08-09 10:17:17,610] - [train.py line:80] :    == cost time: 16.0732s
+[2019-08-09 10:17:17,611] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:17:18,914] - [train.py line:110] :    == test loss: 1.312 | test acc: 55.830%
+[2019-08-09 10:17:18,973] - [train.py line:37] :  === Epoch: [3/250] === 
+[2019-08-09 10:17:23,318] - [train.py line:73] :    == step: [100/391], train loss: 0.906 | train acc: 67.930% | lr: 0.100000
+[2019-08-09 10:17:27,148] - [train.py line:73] :    == step: [200/391], train loss: 0.896 | train acc: 68.188% | lr: 0.100000
+[2019-08-09 10:17:32,946] - [train.py line:73] :    == step: [300/391], train loss: 0.885 | train acc: 68.526% | lr: 0.100000
+[2019-08-09 10:17:36,546] - [train.py line:77] :    == step: [391/391], train loss: 0.874 | train acc: 68.924% | lr: 0.100000
+[2019-08-09 10:17:36,547] - [train.py line:80] :    == cost time: 17.5741s
+[2019-08-09 10:17:36,547] - [train.py line:37] :  === Epoch: [4/250] === 
+[2019-08-09 10:17:40,628] - [train.py line:73] :    == step: [100/391], train loss: 0.795 | train acc: 71.984% | lr: 0.100000
+[2019-08-09 10:17:43,705] - [train.py line:73] :    == step: [200/391], train loss: 0.781 | train acc: 72.637% | lr: 0.100000
+[2019-08-09 10:17:47,648] - [train.py line:73] :    == step: [300/391], train loss: 0.773 | train acc: 72.971% | lr: 0.100000
+[2019-08-09 10:17:51,327] - [train.py line:77] :    == step: [391/391], train loss: 0.762 | train acc: 73.306% | lr: 0.100000
+[2019-08-09 10:17:51,328] - [train.py line:80] :    == cost time: 14.7809s
+[2019-08-09 10:17:51,329] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:17:52,724] - [train.py line:110] :    == test loss: 0.849 | test acc: 71.670%
+[2019-08-09 10:17:52,773] - [train.py line:37] :  === Epoch: [5/250] === 
+[2019-08-09 10:17:56,981] - [train.py line:73] :    == step: [100/391], train loss: 0.712 | train acc: 74.438% | lr: 0.100000
+[2019-08-09 10:18:00,976] - [train.py line:73] :    == step: [200/391], train loss: 0.701 | train acc: 75.051% | lr: 0.100000
+[2019-08-09 10:18:04,812] - [train.py line:73] :    == step: [300/391], train loss: 0.696 | train acc: 75.263% | lr: 0.100000
+[2019-08-09 10:18:08,333] - [train.py line:77] :    == step: [391/391], train loss: 0.687 | train acc: 75.632% | lr: 0.100000
+[2019-08-09 10:18:08,333] - [train.py line:80] :    == cost time: 15.5612s
+[2019-08-09 10:18:08,335] - [train.py line:37] :  === Epoch: [6/250] === 
+[2019-08-09 10:18:12,636] - [train.py line:73] :    == step: [100/391], train loss: 0.648 | train acc: 77.141% | lr: 0.100000
+[2019-08-09 10:18:16,515] - [train.py line:73] :    == step: [200/391], train loss: 0.635 | train acc: 77.695% | lr: 0.100000
+[2019-08-09 10:18:20,406] - [train.py line:73] :    == step: [300/391], train loss: 0.631 | train acc: 77.977% | lr: 0.100000
+[2019-08-09 10:18:24,058] - [train.py line:77] :    == step: [391/391], train loss: 0.625 | train acc: 78.228% | lr: 0.100000
+[2019-08-09 10:18:24,059] - [train.py line:80] :    == cost time: 15.7248s
+[2019-08-09 10:18:24,059] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:18:25,632] - [train.py line:110] :    == test loss: 0.682 | test acc: 76.630%
+[2019-08-09 10:18:25,680] - [train.py line:37] :  === Epoch: [7/250] === 
+[2019-08-09 10:18:29,750] - [train.py line:73] :    == step: [100/391], train loss: 0.592 | train acc: 79.508% | lr: 0.100000
+[2019-08-09 10:18:33,141] - [train.py line:73] :    == step: [200/391], train loss: 0.581 | train acc: 79.820% | lr: 0.100000
+[2019-08-09 10:18:37,055] - [train.py line:73] :    == step: [300/391], train loss: 0.584 | train acc: 79.651% | lr: 0.100000
+[2019-08-09 10:18:40,771] - [train.py line:77] :    == step: [391/391], train loss: 0.580 | train acc: 79.798% | lr: 0.100000
+[2019-08-09 10:18:40,771] - [train.py line:80] :    == cost time: 15.0918s
+[2019-08-09 10:18:40,772] - [train.py line:37] :  === Epoch: [8/250] === 
+[2019-08-09 10:18:44,894] - [train.py line:73] :    == step: [100/391], train loss: 0.560 | train acc: 80.883% | lr: 0.100000
+[2019-08-09 10:18:48,915] - [train.py line:73] :    == step: [200/391], train loss: 0.557 | train acc: 80.598% | lr: 0.100000
+[2019-08-09 10:18:52,678] - [train.py line:73] :    == step: [300/391], train loss: 0.551 | train acc: 80.805% | lr: 0.100000
+[2019-08-09 10:18:56,210] - [train.py line:77] :    == step: [391/391], train loss: 0.550 | train acc: 80.852% | lr: 0.100000
+[2019-08-09 10:18:56,210] - [train.py line:80] :    == cost time: 15.4386s
+[2019-08-09 10:18:56,211] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:18:57,558] - [train.py line:110] :    == test loss: 0.645 | test acc: 77.990%
+[2019-08-09 10:18:57,606] - [train.py line:37] :  === Epoch: [9/250] === 
+[2019-08-09 10:19:02,012] - [train.py line:73] :    == step: [100/391], train loss: 0.506 | train acc: 82.539% | lr: 0.100000
+[2019-08-09 10:19:05,936] - [train.py line:73] :    == step: [200/391], train loss: 0.514 | train acc: 82.086% | lr: 0.100000
+[2019-08-09 10:19:09,865] - [train.py line:73] :    == step: [300/391], train loss: 0.519 | train acc: 82.036% | lr: 0.100000
+[2019-08-09 10:19:13,643] - [train.py line:77] :    == step: [391/391], train loss: 0.519 | train acc: 82.044% | lr: 0.100000
+[2019-08-09 10:19:13,643] - [train.py line:80] :    == cost time: 16.0387s
+[2019-08-09 10:19:13,645] - [train.py line:37] :  === Epoch: [10/250] === 
+[2019-08-09 10:19:17,975] - [train.py line:73] :    == step: [100/391], train loss: 0.500 | train acc: 82.297% | lr: 0.100000
+[2019-08-09 10:19:21,876] - [train.py line:73] :    == step: [200/391], train loss: 0.501 | train acc: 82.461% | lr: 0.100000
+[2019-08-09 10:19:25,834] - [train.py line:73] :    == step: [300/391], train loss: 0.499 | train acc: 82.594% | lr: 0.100000
+[2019-08-09 10:19:29,386] - [train.py line:77] :    == step: [391/391], train loss: 0.498 | train acc: 82.676% | lr: 0.100000
+[2019-08-09 10:19:29,386] - [train.py line:80] :    == cost time: 15.7422s
+[2019-08-09 10:19:29,387] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:19:30,731] - [train.py line:110] :    == test loss: 0.574 | test acc: 80.150%
+[2019-08-09 10:19:30,778] - [train.py line:37] :  === Epoch: [11/250] === 
+[2019-08-09 10:19:34,752] - [train.py line:73] :    == step: [100/391], train loss: 0.490 | train acc: 82.891% | lr: 0.100000
+[2019-08-09 10:19:38,425] - [train.py line:73] :    == step: [200/391], train loss: 0.479 | train acc: 83.449% | lr: 0.100000
+[2019-08-09 10:19:42,393] - [train.py line:73] :    == step: [300/391], train loss: 0.476 | train acc: 83.622% | lr: 0.100000
+[2019-08-09 10:19:47,780] - [train.py line:77] :    == step: [391/391], train loss: 0.476 | train acc: 83.618% | lr: 0.100000
+[2019-08-09 10:19:47,781] - [train.py line:80] :    == cost time: 17.0032s
+[2019-08-09 10:19:47,782] - [train.py line:37] :  === Epoch: [12/250] === 
+[2019-08-09 10:19:51,987] - [train.py line:73] :    == step: [100/391], train loss: 0.451 | train acc: 84.523% | lr: 0.100000
+[2019-08-09 10:19:55,813] - [train.py line:73] :    == step: [200/391], train loss: 0.455 | train acc: 84.258% | lr: 0.100000
+[2019-08-09 10:19:59,903] - [train.py line:73] :    == step: [300/391], train loss: 0.458 | train acc: 83.997% | lr: 0.100000
+[2019-08-09 10:20:09,321] - [train.py line:77] :    == step: [391/391], train loss: 0.463 | train acc: 83.878% | lr: 0.100000
+[2019-08-09 10:20:10,436] - [train.py line:80] :    == cost time: 22.6541s
+[2019-08-09 10:20:10,437] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:20:11,597] - [train.py line:110] :    == test loss: 0.520 | test acc: 81.870%
+[2019-08-09 10:20:11,862] - [train.py line:37] :  === Epoch: [13/250] === 
+[2019-08-09 10:20:15,903] - [train.py line:73] :    == step: [100/391], train loss: 0.431 | train acc: 85.234% | lr: 0.100000
+[2019-08-09 10:20:19,439] - [train.py line:73] :    == step: [200/391], train loss: 0.429 | train acc: 85.457% | lr: 0.100000
+[2019-08-09 10:20:22,544] - [train.py line:73] :    == step: [300/391], train loss: 0.439 | train acc: 85.049% | lr: 0.100000
+[2019-08-09 10:20:29,997] - [train.py line:77] :    == step: [391/391], train loss: 0.440 | train acc: 84.962% | lr: 0.100000
+[2019-08-09 10:20:30,267] - [train.py line:80] :    == cost time: 18.4061s
+[2019-08-09 10:20:30,268] - [train.py line:37] :  === Epoch: [14/250] === 
+[2019-08-09 10:20:36,631] - [train.py line:73] :    == step: [100/391], train loss: 0.424 | train acc: 85.562% | lr: 0.100000
+[2019-08-09 10:20:42,471] - [train.py line:73] :    == step: [200/391], train loss: 0.426 | train acc: 85.305% | lr: 0.100000
+[2019-08-09 10:20:52,114] - [train.py line:73] :    == step: [300/391], train loss: 0.428 | train acc: 85.271% | lr: 0.100000
+[2019-08-09 10:20:57,620] - [train.py line:77] :    == step: [391/391], train loss: 0.433 | train acc: 85.124% | lr: 0.100000
+[2019-08-09 10:20:57,620] - [train.py line:80] :    == cost time: 27.3530s
+[2019-08-09 10:20:57,621] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:20:59,418] - [train.py line:110] :    == test loss: 0.624 | test acc: 79.450%
+[2019-08-09 10:20:59,454] - [train.py line:37] :  === Epoch: [15/250] === 
+[2019-08-09 10:21:05,907] - [train.py line:73] :    == step: [100/391], train loss: 0.406 | train acc: 85.977% | lr: 0.100000
+[2019-08-09 10:21:11,602] - [train.py line:73] :    == step: [200/391], train loss: 0.417 | train acc: 85.582% | lr: 0.100000
+[2019-08-09 10:21:17,943] - [train.py line:73] :    == step: [300/391], train loss: 0.419 | train acc: 85.469% | lr: 0.100000
+[2019-08-09 10:21:23,449] - [train.py line:77] :    == step: [391/391], train loss: 0.423 | train acc: 85.320% | lr: 0.100000
+[2019-08-09 10:21:23,449] - [train.py line:80] :    == cost time: 23.9959s
+[2019-08-09 10:21:23,450] - [train.py line:37] :  === Epoch: [16/250] === 
+[2019-08-09 10:21:29,561] - [train.py line:73] :    == step: [100/391], train loss: 0.399 | train acc: 86.094% | lr: 0.100000
+[2019-08-09 10:21:35,392] - [train.py line:73] :    == step: [200/391], train loss: 0.405 | train acc: 85.883% | lr: 0.100000
+[2019-08-09 10:21:39,495] - [train.py line:73] :    == step: [300/391], train loss: 0.410 | train acc: 85.737% | lr: 0.100000
+[2019-08-09 10:21:47,107] - [train.py line:77] :    == step: [391/391], train loss: 0.409 | train acc: 85.710% | lr: 0.100000
+[2019-08-09 10:21:47,107] - [train.py line:80] :    == cost time: 23.6576s
+[2019-08-09 10:21:47,108] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:21:49,046] - [train.py line:110] :    == test loss: 0.581 | test acc: 81.720%
+[2019-08-09 10:21:49,119] - [train.py line:37] :  === Epoch: [17/250] === 
+[2019-08-09 10:21:55,673] - [train.py line:73] :    == step: [100/391], train loss: 0.390 | train acc: 86.555% | lr: 0.100000
+[2019-08-09 10:22:16,612] - [train.py line:73] :    == step: [200/391], train loss: 0.395 | train acc: 86.305% | lr: 0.100000
+[2019-08-09 10:22:21,101] - [train.py line:73] :    == step: [300/391], train loss: 0.399 | train acc: 86.055% | lr: 0.100000
+[2019-08-09 10:22:27,569] - [train.py line:77] :    == step: [391/391], train loss: 0.399 | train acc: 86.058% | lr: 0.100000
+[2019-08-09 10:22:27,570] - [train.py line:80] :    == cost time: 38.4513s
+[2019-08-09 10:22:27,571] - [train.py line:37] :  === Epoch: [18/250] === 
+[2019-08-09 10:22:34,125] - [train.py line:73] :    == step: [100/391], train loss: 0.383 | train acc: 86.430% | lr: 0.100000
+[2019-08-09 10:22:40,276] - [train.py line:73] :    == step: [200/391], train loss: 0.384 | train acc: 86.363% | lr: 0.100000
+[2019-08-09 10:22:46,557] - [train.py line:73] :    == step: [300/391], train loss: 0.388 | train acc: 86.406% | lr: 0.100000
+[2019-08-09 10:22:52,193] - [train.py line:77] :    == step: [391/391], train loss: 0.387 | train acc: 86.442% | lr: 0.100000
+[2019-08-09 10:22:52,194] - [train.py line:80] :    == cost time: 24.6233s
+[2019-08-09 10:22:52,194] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:22:54,136] - [train.py line:110] :    == test loss: 0.514 | test acc: 82.940%
+[2019-08-09 10:22:54,191] - [train.py line:37] :  === Epoch: [19/250] === 
+[2019-08-09 10:22:59,430] - [train.py line:73] :    == step: [100/391], train loss: 0.378 | train acc: 86.609% | lr: 0.100000
+[2019-08-09 10:23:04,433] - [train.py line:73] :    == step: [200/391], train loss: 0.376 | train acc: 86.820% | lr: 0.100000
+[2019-08-09 10:23:10,694] - [train.py line:73] :    == step: [300/391], train loss: 0.380 | train acc: 86.745% | lr: 0.100000
+[2019-08-09 10:23:46,380] - [train.py line:77] :    == step: [391/391], train loss: 0.384 | train acc: 86.672% | lr: 0.100000
+[2019-08-09 10:23:46,553] - [train.py line:80] :    == cost time: 52.3622s
+[2019-08-09 10:23:46,554] - [train.py line:37] :  === Epoch: [20/250] === 
+[2019-08-09 10:23:52,983] - [train.py line:73] :    == step: [100/391], train loss: 0.371 | train acc: 87.023% | lr: 0.100000
+[2019-08-09 10:23:59,263] - [train.py line:73] :    == step: [200/391], train loss: 0.372 | train acc: 86.965% | lr: 0.100000
+[2019-08-09 10:24:05,510] - [train.py line:73] :    == step: [300/391], train loss: 0.372 | train acc: 86.974% | lr: 0.100000
+[2019-08-09 10:24:16,871] - [train.py line:77] :    == step: [391/391], train loss: 0.374 | train acc: 86.966% | lr: 0.100000
+[2019-08-09 10:24:21,350] - [train.py line:80] :    == cost time: 34.7970s
+[2019-08-09 10:24:21,351] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:24:23,251] - [train.py line:110] :    == test loss: 0.659 | test acc: 79.310%
+[2019-08-09 10:24:23,286] - [train.py line:37] :  === Epoch: [21/250] === 
+[2019-08-09 10:24:29,463] - [train.py line:73] :    == step: [100/391], train loss: 0.350 | train acc: 87.555% | lr: 0.100000
+[2019-08-09 10:24:35,728] - [train.py line:73] :    == step: [200/391], train loss: 0.357 | train acc: 87.410% | lr: 0.100000
+[2019-08-09 10:24:41,846] - [train.py line:73] :    == step: [300/391], train loss: 0.359 | train acc: 87.331% | lr: 0.100000
+[2019-08-09 10:24:47,985] - [train.py line:77] :    == step: [391/391], train loss: 0.363 | train acc: 87.274% | lr: 0.100000
+[2019-08-09 10:24:47,985] - [train.py line:80] :    == cost time: 24.6996s
+[2019-08-09 10:24:47,986] - [train.py line:37] :  === Epoch: [22/250] === 
+[2019-08-09 10:24:54,439] - [train.py line:73] :    == step: [100/391], train loss: 0.349 | train acc: 87.789% | lr: 0.100000
+[2019-08-09 10:25:00,751] - [train.py line:73] :    == step: [200/391], train loss: 0.357 | train acc: 87.539% | lr: 0.100000
+[2019-08-09 10:25:07,002] - [train.py line:73] :    == step: [300/391], train loss: 0.358 | train acc: 87.549% | lr: 0.100000
+[2019-08-09 10:25:24,879] - [train.py line:77] :    == step: [391/391], train loss: 0.357 | train acc: 87.618% | lr: 0.100000
+[2019-08-09 10:25:28,922] - [train.py line:80] :    == cost time: 40.9368s
+[2019-08-09 10:25:28,923] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:25:32,680] - [train.py line:110] :    == test loss: 0.489 | test acc: 84.070%
+[2019-08-09 10:25:33,137] - [train.py line:37] :  === Epoch: [23/250] === 
+[2019-08-09 10:25:39,771] - [train.py line:73] :    == step: [100/391], train loss: 0.350 | train acc: 87.953% | lr: 0.100000
+[2019-08-09 10:25:48,633] - [train.py line:73] :    == step: [200/391], train loss: 0.349 | train acc: 87.938% | lr: 0.100000
+[2019-08-09 10:25:54,330] - [train.py line:73] :    == step: [300/391], train loss: 0.350 | train acc: 87.935% | lr: 0.100000
+[2019-08-09 10:26:00,047] - [train.py line:77] :    == step: [391/391], train loss: 0.354 | train acc: 87.832% | lr: 0.100000
+[2019-08-09 10:26:00,048] - [train.py line:80] :    == cost time: 26.9110s
+[2019-08-09 10:26:00,049] - [train.py line:37] :  === Epoch: [24/250] === 
+[2019-08-09 10:26:06,584] - [train.py line:73] :    == step: [100/391], train loss: 0.336 | train acc: 88.203% | lr: 0.100000
+[2019-08-09 10:26:12,625] - [train.py line:73] :    == step: [200/391], train loss: 0.342 | train acc: 87.969% | lr: 0.100000
+[2019-08-09 10:26:18,622] - [train.py line:73] :    == step: [300/391], train loss: 0.348 | train acc: 87.781% | lr: 0.100000
+[2019-08-09 10:26:30,002] - [train.py line:77] :    == step: [391/391], train loss: 0.350 | train acc: 87.782% | lr: 0.100000
+[2019-08-09 10:26:30,178] - [train.py line:80] :    == cost time: 30.1297s
+[2019-08-09 10:26:30,178] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:26:32,144] - [train.py line:110] :    == test loss: 0.563 | test acc: 82.720%
+[2019-08-09 10:26:32,181] - [train.py line:37] :  === Epoch: [25/250] === 
+[2019-08-09 10:26:38,811] - [train.py line:73] :    == step: [100/391], train loss: 0.338 | train acc: 88.234% | lr: 0.100000
+[2019-08-09 10:26:44,635] - [train.py line:73] :    == step: [200/391], train loss: 0.333 | train acc: 88.395% | lr: 0.100000
+[2019-08-09 10:26:50,684] - [train.py line:73] :    == step: [300/391], train loss: 0.337 | train acc: 88.221% | lr: 0.100000
+[2019-08-09 10:26:56,455] - [train.py line:77] :    == step: [391/391], train loss: 0.341 | train acc: 88.022% | lr: 0.100000
+[2019-08-09 10:26:56,455] - [train.py line:80] :    == cost time: 24.2746s
+[2019-08-09 10:26:56,456] - [train.py line:37] :  === Epoch: [26/250] === 
+[2019-08-09 10:27:02,735] - [train.py line:73] :    == step: [100/391], train loss: 0.334 | train acc: 88.047% | lr: 0.100000
+[2019-08-09 10:27:09,022] - [train.py line:73] :    == step: [200/391], train loss: 0.328 | train acc: 88.387% | lr: 0.100000
+[2019-08-09 10:27:15,172] - [train.py line:73] :    == step: [300/391], train loss: 0.332 | train acc: 88.234% | lr: 0.100000
+[2019-08-09 10:27:20,981] - [train.py line:77] :    == step: [391/391], train loss: 0.335 | train acc: 88.202% | lr: 0.100000
+[2019-08-09 10:27:20,981] - [train.py line:80] :    == cost time: 24.5261s
+[2019-08-09 10:27:20,982] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:27:22,826] - [train.py line:110] :    == test loss: 0.455 | test acc: 84.970%
+[2019-08-09 10:27:22,875] - [train.py line:37] :  === Epoch: [27/250] === 
+[2019-08-09 10:27:29,364] - [train.py line:73] :    == step: [100/391], train loss: 0.319 | train acc: 88.820% | lr: 0.100000
+[2019-08-09 10:27:35,613] - [train.py line:73] :    == step: [200/391], train loss: 0.328 | train acc: 88.516% | lr: 0.100000
+[2019-08-09 10:27:41,761] - [train.py line:73] :    == step: [300/391], train loss: 0.329 | train acc: 88.445% | lr: 0.100000
+[2019-08-09 10:27:47,306] - [train.py line:77] :    == step: [391/391], train loss: 0.332 | train acc: 88.426% | lr: 0.100000
+[2019-08-09 10:27:47,306] - [train.py line:80] :    == cost time: 24.4319s
+[2019-08-09 10:27:47,307] - [train.py line:37] :  === Epoch: [28/250] === 
+[2019-08-09 10:27:53,506] - [train.py line:73] :    == step: [100/391], train loss: 0.316 | train acc: 88.797% | lr: 0.100000
+[2019-08-09 10:27:59,367] - [train.py line:73] :    == step: [200/391], train loss: 0.315 | train acc: 89.102% | lr: 0.100000
+[2019-08-09 10:28:05,542] - [train.py line:73] :    == step: [300/391], train loss: 0.323 | train acc: 88.682% | lr: 0.100000
+[2019-08-09 10:28:11,359] - [train.py line:77] :    == step: [391/391], train loss: 0.327 | train acc: 88.556% | lr: 0.100000
+[2019-08-09 10:28:11,360] - [train.py line:80] :    == cost time: 24.0534s
+[2019-08-09 10:28:11,361] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:28:13,328] - [train.py line:110] :    == test loss: 0.525 | test acc: 83.130%
+[2019-08-09 10:28:13,362] - [train.py line:37] :  === Epoch: [29/250] === 
+[2019-08-09 10:28:19,641] - [train.py line:73] :    == step: [100/391], train loss: 0.321 | train acc: 88.977% | lr: 0.100000
+[2019-08-09 10:28:25,879] - [train.py line:73] :    == step: [200/391], train loss: 0.325 | train acc: 88.730% | lr: 0.100000
+[2019-08-09 10:28:32,073] - [train.py line:73] :    == step: [300/391], train loss: 0.325 | train acc: 88.646% | lr: 0.100000
+[2019-08-09 10:28:37,906] - [train.py line:77] :    == step: [391/391], train loss: 0.327 | train acc: 88.570% | lr: 0.100000
+[2019-08-09 10:28:37,906] - [train.py line:80] :    == cost time: 24.5444s
+[2019-08-09 10:28:37,907] - [train.py line:37] :  === Epoch: [30/250] === 
+[2019-08-09 10:28:44,468] - [train.py line:73] :    == step: [100/391], train loss: 0.323 | train acc: 88.938% | lr: 0.100000
+[2019-08-09 10:28:50,752] - [train.py line:73] :    == step: [200/391], train loss: 0.317 | train acc: 89.102% | lr: 0.100000
+[2019-08-09 10:28:55,921] - [train.py line:73] :    == step: [300/391], train loss: 0.318 | train acc: 89.070% | lr: 0.100000
+[2019-08-09 10:29:01,661] - [train.py line:77] :    == step: [391/391], train loss: 0.319 | train acc: 88.966% | lr: 0.100000
+[2019-08-09 10:29:01,662] - [train.py line:80] :    == cost time: 23.7553s
+[2019-08-09 10:29:01,663] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:29:03,442] - [train.py line:110] :    == test loss: 0.517 | test acc: 83.390%
+[2019-08-09 10:29:03,497] - [train.py line:37] :  === Epoch: [31/250] === 
+[2019-08-09 10:29:10,121] - [train.py line:73] :    == step: [100/391], train loss: 0.299 | train acc: 89.844% | lr: 0.100000
+[2019-08-09 10:29:16,334] - [train.py line:73] :    == step: [200/391], train loss: 0.306 | train acc: 89.395% | lr: 0.100000
+[2019-08-09 10:29:22,211] - [train.py line:73] :    == step: [300/391], train loss: 0.317 | train acc: 88.977% | lr: 0.100000
+[2019-08-09 10:29:32,482] - [train.py line:77] :    == step: [391/391], train loss: 0.320 | train acc: 88.842% | lr: 0.100000
+[2019-08-09 10:29:32,545] - [train.py line:80] :    == cost time: 29.0486s
+[2019-08-09 10:29:32,546] - [train.py line:37] :  === Epoch: [32/250] === 
+[2019-08-09 10:29:39,045] - [train.py line:73] :    == step: [100/391], train loss: 0.309 | train acc: 89.477% | lr: 0.100000
+[2019-08-09 10:29:45,357] - [train.py line:73] :    == step: [200/391], train loss: 0.307 | train acc: 89.332% | lr: 0.100000
+[2019-08-09 10:29:51,329] - [train.py line:73] :    == step: [300/391], train loss: 0.316 | train acc: 89.018% | lr: 0.100000
+[2019-08-09 10:30:09,556] - [train.py line:77] :    == step: [391/391], train loss: 0.319 | train acc: 88.916% | lr: 0.100000
+[2019-08-09 10:30:09,659] - [train.py line:80] :    == cost time: 37.1133s
+[2019-08-09 10:30:09,659] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:30:12,796] - [train.py line:110] :    == test loss: 0.632 | test acc: 81.660%
+[2019-08-09 10:30:16,815] - [train.py line:37] :  === Epoch: [33/250] === 
+[2019-08-09 10:30:23,803] - [train.py line:73] :    == step: [100/391], train loss: 0.296 | train acc: 89.602% | lr: 0.100000
+[2019-08-09 10:30:30,321] - [train.py line:73] :    == step: [200/391], train loss: 0.294 | train acc: 89.727% | lr: 0.100000
+[2019-08-09 10:30:37,852] - [train.py line:73] :    == step: [300/391], train loss: 0.300 | train acc: 89.448% | lr: 0.100000
+[2019-08-09 10:30:51,870] - [train.py line:77] :    == step: [391/391], train loss: 0.307 | train acc: 89.172% | lr: 0.100000
+[2019-08-09 10:30:51,871] - [train.py line:80] :    == cost time: 35.0567s
+[2019-08-09 10:30:51,872] - [train.py line:37] :  === Epoch: [34/250] === 
+[2019-08-09 10:30:59,594] - [train.py line:73] :    == step: [100/391], train loss: 0.297 | train acc: 89.336% | lr: 0.100000
+[2019-08-09 10:31:05,878] - [train.py line:73] :    == step: [200/391], train loss: 0.299 | train acc: 89.484% | lr: 0.100000
+[2019-08-09 10:31:12,073] - [train.py line:73] :    == step: [300/391], train loss: 0.303 | train acc: 89.365% | lr: 0.100000
+[2019-08-09 10:31:17,320] - [train.py line:77] :    == step: [391/391], train loss: 0.307 | train acc: 89.280% | lr: 0.100000
+[2019-08-09 10:31:17,320] - [train.py line:80] :    == cost time: 25.4492s
+[2019-08-09 10:31:17,321] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:31:19,134] - [train.py line:110] :    == test loss: 0.526 | test acc: 83.560%
+[2019-08-09 10:31:19,171] - [train.py line:37] :  === Epoch: [35/250] === 
+[2019-08-09 10:31:24,912] - [train.py line:73] :    == step: [100/391], train loss: 0.294 | train acc: 89.789% | lr: 0.100000
+[2019-08-09 10:31:30,554] - [train.py line:73] :    == step: [200/391], train loss: 0.298 | train acc: 89.500% | lr: 0.100000
+[2019-08-09 10:31:36,644] - [train.py line:73] :    == step: [300/391], train loss: 0.303 | train acc: 89.344% | lr: 0.100000
+[2019-08-09 10:31:42,525] - [train.py line:77] :    == step: [391/391], train loss: 0.305 | train acc: 89.292% | lr: 0.100000
+[2019-08-09 10:31:42,525] - [train.py line:80] :    == cost time: 23.3543s
+[2019-08-09 10:31:42,526] - [train.py line:37] :  === Epoch: [36/250] === 
+[2019-08-09 10:31:48,805] - [train.py line:73] :    == step: [100/391], train loss: 0.280 | train acc: 90.320% | lr: 0.100000
+[2019-08-09 10:31:55,175] - [train.py line:73] :    == step: [200/391], train loss: 0.286 | train acc: 90.043% | lr: 0.100000
+[2019-08-09 10:32:24,926] - [train.py line:73] :    == step: [300/391], train loss: 0.296 | train acc: 89.685% | lr: 0.100000
+[2019-08-09 10:32:30,560] - [train.py line:77] :    == step: [391/391], train loss: 0.300 | train acc: 89.632% | lr: 0.100000
+[2019-08-09 10:32:30,561] - [train.py line:80] :    == cost time: 48.0351s
+[2019-08-09 10:32:30,561] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:32:32,651] - [train.py line:110] :    == test loss: 0.514 | test acc: 84.160%
+[2019-08-09 10:32:32,687] - [train.py line:37] :  === Epoch: [37/250] === 
+[2019-08-09 10:32:39,903] - [train.py line:73] :    == step: [100/391], train loss: 0.284 | train acc: 90.070% | lr: 0.100000
+[2019-08-09 10:32:47,439] - [train.py line:73] :    == step: [200/391], train loss: 0.295 | train acc: 89.641% | lr: 0.100000
+[2019-08-09 10:32:54,956] - [train.py line:73] :    == step: [300/391], train loss: 0.296 | train acc: 89.669% | lr: 0.100000
+[2019-08-09 10:33:02,382] - [train.py line:77] :    == step: [391/391], train loss: 0.299 | train acc: 89.612% | lr: 0.100000
+[2019-08-09 10:33:02,382] - [train.py line:80] :    == cost time: 29.6961s
+[2019-08-09 10:33:02,383] - [train.py line:37] :  === Epoch: [38/250] === 
+[2019-08-09 10:33:10,043] - [train.py line:73] :    == step: [100/391], train loss: 0.284 | train acc: 90.172% | lr: 0.100000
+[2019-08-09 10:33:17,460] - [train.py line:73] :    == step: [200/391], train loss: 0.284 | train acc: 90.211% | lr: 0.100000
+[2019-08-09 10:33:29,320] - [train.py line:73] :    == step: [300/391], train loss: 0.291 | train acc: 89.891% | lr: 0.100000
+[2019-08-09 10:33:39,326] - [train.py line:77] :    == step: [391/391], train loss: 0.294 | train acc: 89.750% | lr: 0.100000
+[2019-08-09 10:33:39,419] - [train.py line:80] :    == cost time: 37.0333s
+[2019-08-09 10:33:39,420] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:33:41,371] - [train.py line:110] :    == test loss: 0.436 | test acc: 85.480%
+[2019-08-09 10:33:41,418] - [train.py line:37] :  === Epoch: [39/250] === 
+[2019-08-09 10:33:48,003] - [train.py line:73] :    == step: [100/391], train loss: 0.265 | train acc: 90.664% | lr: 0.100000
+[2019-08-09 10:33:54,079] - [train.py line:73] :    == step: [200/391], train loss: 0.276 | train acc: 90.223% | lr: 0.100000
+[2019-08-09 10:34:00,293] - [train.py line:73] :    == step: [300/391], train loss: 0.285 | train acc: 89.945% | lr: 0.100000
+[2019-08-09 10:34:13,913] - [train.py line:77] :    == step: [391/391], train loss: 0.293 | train acc: 89.726% | lr: 0.100000
+[2019-08-09 10:34:27,761] - [train.py line:80] :    == cost time: 46.3433s
+[2019-08-09 10:34:28,199] - [train.py line:37] :  === Epoch: [40/250] === 
+[2019-08-09 10:34:34,731] - [train.py line:73] :    == step: [100/391], train loss: 0.279 | train acc: 90.156% | lr: 0.100000
+[2019-08-09 10:34:41,066] - [train.py line:73] :    == step: [200/391], train loss: 0.287 | train acc: 89.855% | lr: 0.100000
+[2019-08-09 10:34:47,306] - [train.py line:73] :    == step: [300/391], train loss: 0.287 | train acc: 89.940% | lr: 0.100000
+[2019-08-09 10:34:57,177] - [train.py line:77] :    == step: [391/391], train loss: 0.290 | train acc: 89.822% | lr: 0.100000
+[2019-08-09 10:34:57,178] - [train.py line:80] :    == cost time: 28.9791s
+[2019-08-09 10:34:57,178] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:34:59,065] - [train.py line:110] :    == test loss: 0.512 | test acc: 83.400%
+[2019-08-09 10:34:59,099] - [train.py line:37] :  === Epoch: [41/250] === 
+[2019-08-09 10:35:05,760] - [train.py line:73] :    == step: [100/391], train loss: 0.269 | train acc: 90.727% | lr: 0.100000
+[2019-08-09 10:35:11,325] - [train.py line:73] :    == step: [200/391], train loss: 0.281 | train acc: 90.293% | lr: 0.100000
+[2019-08-09 10:35:15,972] - [train.py line:73] :    == step: [300/391], train loss: 0.281 | train acc: 90.190% | lr: 0.100000
+[2019-08-09 10:35:21,075] - [train.py line:77] :    == step: [391/391], train loss: 0.286 | train acc: 90.012% | lr: 0.100000
+[2019-08-09 10:35:21,075] - [train.py line:80] :    == cost time: 21.9770s
+[2019-08-09 10:35:21,076] - [train.py line:37] :  === Epoch: [42/250] === 
+[2019-08-09 10:35:27,554] - [train.py line:73] :    == step: [100/391], train loss: 0.272 | train acc: 90.430% | lr: 0.100000
+[2019-08-09 10:35:33,788] - [train.py line:73] :    == step: [200/391], train loss: 0.281 | train acc: 90.020% | lr: 0.100000
+[2019-08-09 10:35:40,014] - [train.py line:73] :    == step: [300/391], train loss: 0.286 | train acc: 89.878% | lr: 0.100000
+[2019-08-09 10:35:45,739] - [train.py line:77] :    == step: [391/391], train loss: 0.287 | train acc: 89.888% | lr: 0.100000
+[2019-08-09 10:35:45,740] - [train.py line:80] :    == cost time: 24.6643s
+[2019-08-09 10:35:45,740] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:35:47,756] - [train.py line:110] :    == test loss: 0.455 | test acc: 85.800%
+[2019-08-09 10:35:47,831] - [train.py line:37] :  === Epoch: [43/250] === 
+[2019-08-09 10:35:54,196] - [train.py line:73] :    == step: [100/391], train loss: 0.266 | train acc: 90.758% | lr: 0.100000
+[2019-08-09 10:36:00,327] - [train.py line:73] :    == step: [200/391], train loss: 0.275 | train acc: 90.406% | lr: 0.100000
+[2019-08-09 10:36:06,639] - [train.py line:73] :    == step: [300/391], train loss: 0.283 | train acc: 90.081% | lr: 0.100000
+[2019-08-09 10:36:12,210] - [train.py line:77] :    == step: [391/391], train loss: 0.284 | train acc: 90.050% | lr: 0.100000
+[2019-08-09 10:36:12,210] - [train.py line:80] :    == cost time: 24.3803s
+[2019-08-09 10:36:12,211] - [train.py line:37] :  === Epoch: [44/250] === 
+[2019-08-09 10:36:17,211] - [train.py line:73] :    == step: [100/391], train loss: 0.267 | train acc: 90.648% | lr: 0.100000
+[2019-08-09 10:36:24,304] - [train.py line:73] :    == step: [200/391], train loss: 0.274 | train acc: 90.453% | lr: 0.100000
+[2019-08-09 10:36:30,555] - [train.py line:73] :    == step: [300/391], train loss: 0.276 | train acc: 90.310% | lr: 0.100000
+[2019-08-09 10:36:36,288] - [train.py line:77] :    == step: [391/391], train loss: 0.281 | train acc: 90.140% | lr: 0.100000
+[2019-08-09 10:36:36,289] - [train.py line:80] :    == cost time: 24.0778s
+[2019-08-09 10:36:36,289] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:36:38,215] - [train.py line:110] :    == test loss: 0.530 | test acc: 83.810%
+[2019-08-09 10:36:38,245] - [train.py line:37] :  === Epoch: [45/250] === 
+[2019-08-09 10:36:44,548] - [train.py line:73] :    == step: [100/391], train loss: 0.265 | train acc: 90.797% | lr: 0.100000
+[2019-08-09 10:36:50,792] - [train.py line:73] :    == step: [200/391], train loss: 0.270 | train acc: 90.590% | lr: 0.100000
+[2019-08-09 10:36:56,839] - [train.py line:73] :    == step: [300/391], train loss: 0.274 | train acc: 90.393% | lr: 0.100000
+[2019-08-09 10:37:02,521] - [train.py line:77] :    == step: [391/391], train loss: 0.281 | train acc: 90.152% | lr: 0.100000
+[2019-08-09 10:37:02,521] - [train.py line:80] :    == cost time: 24.2770s
+[2019-08-09 10:37:02,522] - [train.py line:37] :  === Epoch: [46/250] === 
+[2019-08-09 10:37:08,930] - [train.py line:73] :    == step: [100/391], train loss: 0.270 | train acc: 90.289% | lr: 0.100000
+[2019-08-09 10:37:14,866] - [train.py line:73] :    == step: [200/391], train loss: 0.275 | train acc: 90.234% | lr: 0.100000
+[2019-08-09 10:37:20,953] - [train.py line:73] :    == step: [300/391], train loss: 0.276 | train acc: 90.276% | lr: 0.100000
+[2019-08-09 10:37:29,717] - [train.py line:77] :    == step: [391/391], train loss: 0.277 | train acc: 90.280% | lr: 0.100000
+[2019-08-09 10:37:31,467] - [train.py line:80] :    == cost time: 28.9452s
+[2019-08-09 10:37:31,468] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:37:33,438] - [train.py line:110] :    == test loss: 0.422 | test acc: 86.410%
+[2019-08-09 10:37:33,504] - [train.py line:37] :  === Epoch: [47/250] === 
+[2019-08-09 10:37:40,003] - [train.py line:73] :    == step: [100/391], train loss: 0.268 | train acc: 90.578% | lr: 0.100000
+[2019-08-09 10:37:46,314] - [train.py line:73] :    == step: [200/391], train loss: 0.277 | train acc: 90.191% | lr: 0.100000
+[2019-08-09 10:37:52,585] - [train.py line:73] :    == step: [300/391], train loss: 0.276 | train acc: 90.240% | lr: 0.100000
+[2019-08-09 10:37:58,245] - [train.py line:77] :    == step: [391/391], train loss: 0.278 | train acc: 90.204% | lr: 0.100000
+[2019-08-09 10:37:58,245] - [train.py line:80] :    == cost time: 24.7414s
+[2019-08-09 10:37:58,246] - [train.py line:37] :  === Epoch: [48/250] === 
+[2019-08-09 10:38:04,862] - [train.py line:73] :    == step: [100/391], train loss: 0.280 | train acc: 90.547% | lr: 0.100000
+[2019-08-09 10:38:11,153] - [train.py line:73] :    == step: [200/391], train loss: 0.271 | train acc: 90.594% | lr: 0.100000
+[2019-08-09 10:38:17,497] - [train.py line:73] :    == step: [300/391], train loss: 0.273 | train acc: 90.523% | lr: 0.100000
+[2019-08-09 10:38:23,143] - [train.py line:77] :    == step: [391/391], train loss: 0.276 | train acc: 90.400% | lr: 0.100000
+[2019-08-09 10:38:23,143] - [train.py line:80] :    == cost time: 24.8977s
+[2019-08-09 10:38:23,144] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:38:25,019] - [train.py line:110] :    == test loss: 0.445 | test acc: 85.630%
+[2019-08-09 10:38:25,061] - [train.py line:37] :  === Epoch: [49/250] === 
+[2019-08-09 10:38:31,627] - [train.py line:73] :    == step: [100/391], train loss: 0.272 | train acc: 90.633% | lr: 0.100000
+[2019-08-09 10:38:37,935] - [train.py line:73] :    == step: [200/391], train loss: 0.265 | train acc: 90.797% | lr: 0.100000
+[2019-08-09 10:38:43,960] - [train.py line:73] :    == step: [300/391], train loss: 0.267 | train acc: 90.708% | lr: 0.100000
+[2019-08-09 10:38:54,264] - [train.py line:77] :    == step: [391/391], train loss: 0.274 | train acc: 90.406% | lr: 0.100000
+[2019-08-09 10:38:54,265] - [train.py line:80] :    == cost time: 29.2043s
+[2019-08-09 10:38:54,266] - [train.py line:37] :  === Epoch: [50/250] === 
+[2019-08-09 10:39:00,637] - [train.py line:73] :    == step: [100/391], train loss: 0.273 | train acc: 90.438% | lr: 0.100000
+[2019-08-09 10:39:06,832] - [train.py line:73] :    == step: [200/391], train loss: 0.266 | train acc: 90.613% | lr: 0.100000
+[2019-08-09 10:39:12,920] - [train.py line:73] :    == step: [300/391], train loss: 0.266 | train acc: 90.604% | lr: 0.100000
+[2019-08-09 10:39:18,717] - [train.py line:77] :    == step: [391/391], train loss: 0.271 | train acc: 90.376% | lr: 0.100000
+[2019-08-09 10:39:18,717] - [train.py line:80] :    == cost time: 24.4523s
+[2019-08-09 10:39:18,719] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:39:20,757] - [train.py line:110] :    == test loss: 0.435 | test acc: 86.320%
+[2019-08-09 10:39:20,794] - [train.py line:37] :  === Epoch: [51/250] === 
+[2019-08-09 10:39:27,541] - [train.py line:73] :    == step: [100/391], train loss: 0.265 | train acc: 90.570% | lr: 0.100000
+[2019-08-09 10:39:33,834] - [train.py line:73] :    == step: [200/391], train loss: 0.262 | train acc: 90.691% | lr: 0.100000
+[2019-08-09 10:39:39,929] - [train.py line:73] :    == step: [300/391], train loss: 0.262 | train acc: 90.745% | lr: 0.100000
+[2019-08-09 10:39:57,329] - [train.py line:77] :    == step: [391/391], train loss: 0.266 | train acc: 90.698% | lr: 0.100000
+[2019-08-09 10:40:01,105] - [train.py line:80] :    == cost time: 40.3116s
+[2019-08-09 10:40:01,106] - [train.py line:37] :  === Epoch: [52/250] === 
+[2019-08-09 10:40:07,527] - [train.py line:73] :    == step: [100/391], train loss: 0.258 | train acc: 91.055% | lr: 0.100000
+[2019-08-09 10:40:21,648] - [train.py line:73] :    == step: [200/391], train loss: 0.260 | train acc: 90.965% | lr: 0.100000
+[2019-08-09 10:40:27,881] - [train.py line:73] :    == step: [300/391], train loss: 0.267 | train acc: 90.688% | lr: 0.100000
+[2019-08-09 10:40:33,483] - [train.py line:77] :    == step: [391/391], train loss: 0.266 | train acc: 90.758% | lr: 0.100000
+[2019-08-09 10:40:33,484] - [train.py line:80] :    == cost time: 32.3783s
+[2019-08-09 10:40:33,486] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:40:35,397] - [train.py line:110] :    == test loss: 0.433 | test acc: 86.090%
+[2019-08-09 10:40:35,474] - [train.py line:37] :  === Epoch: [53/250] === 
+[2019-08-09 10:40:42,102] - [train.py line:73] :    == step: [100/391], train loss: 0.268 | train acc: 90.438% | lr: 0.100000
+[2019-08-09 10:40:48,010] - [train.py line:73] :    == step: [200/391], train loss: 0.261 | train acc: 90.855% | lr: 0.100000
+[2019-08-09 10:40:54,213] - [train.py line:73] :    == step: [300/391], train loss: 0.266 | train acc: 90.747% | lr: 0.100000
+[2019-08-09 10:40:59,937] - [train.py line:77] :    == step: [391/391], train loss: 0.265 | train acc: 90.830% | lr: 0.100000
+[2019-08-09 10:40:59,937] - [train.py line:80] :    == cost time: 24.4642s
+[2019-08-09 10:40:59,938] - [train.py line:37] :  === Epoch: [54/250] === 
+[2019-08-09 10:41:06,493] - [train.py line:73] :    == step: [100/391], train loss: 0.248 | train acc: 91.375% | lr: 0.100000
+[2019-08-09 10:41:12,755] - [train.py line:73] :    == step: [200/391], train loss: 0.254 | train acc: 91.133% | lr: 0.100000
+[2019-08-09 10:41:18,998] - [train.py line:73] :    == step: [300/391], train loss: 0.260 | train acc: 90.997% | lr: 0.100000
+[2019-08-09 10:41:28,418] - [train.py line:77] :    == step: [391/391], train loss: 0.264 | train acc: 90.782% | lr: 0.100000
+[2019-08-09 10:41:28,568] - [train.py line:80] :    == cost time: 28.6305s
+[2019-08-09 10:41:28,569] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:41:30,582] - [train.py line:110] :    == test loss: 0.438 | test acc: 85.600%
+[2019-08-09 10:41:30,618] - [train.py line:37] :  === Epoch: [55/250] === 
+[2019-08-09 10:41:36,871] - [train.py line:73] :    == step: [100/391], train loss: 0.253 | train acc: 91.039% | lr: 0.100000
+[2019-08-09 10:41:43,069] - [train.py line:73] :    == step: [200/391], train loss: 0.254 | train acc: 90.980% | lr: 0.100000
+[2019-08-09 10:41:49,169] - [train.py line:73] :    == step: [300/391], train loss: 0.256 | train acc: 90.971% | lr: 0.100000
+[2019-08-09 10:42:05,590] - [train.py line:77] :    == step: [391/391], train loss: 0.265 | train acc: 90.662% | lr: 0.100000
+[2019-08-09 10:42:11,713] - [train.py line:80] :    == cost time: 41.0955s
+[2019-08-09 10:42:11,812] - [train.py line:37] :  === Epoch: [56/250] === 
+[2019-08-09 10:42:18,437] - [train.py line:73] :    == step: [100/391], train loss: 0.262 | train acc: 90.781% | lr: 0.100000
+[2019-08-09 10:42:24,652] - [train.py line:73] :    == step: [200/391], train loss: 0.256 | train acc: 91.094% | lr: 0.100000
+[2019-08-09 10:42:30,697] - [train.py line:73] :    == step: [300/391], train loss: 0.258 | train acc: 90.953% | lr: 0.100000
+[2019-08-09 10:42:36,276] - [train.py line:77] :    == step: [391/391], train loss: 0.261 | train acc: 90.822% | lr: 0.100000
+[2019-08-09 10:42:36,276] - [train.py line:80] :    == cost time: 24.4656s
+[2019-08-09 10:42:36,277] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:42:38,119] - [train.py line:110] :    == test loss: 0.433 | test acc: 85.860%
+[2019-08-09 10:42:38,153] - [train.py line:37] :  === Epoch: [57/250] === 
+[2019-08-09 10:42:44,085] - [train.py line:73] :    == step: [100/391], train loss: 0.253 | train acc: 91.242% | lr: 0.100000
+[2019-08-09 10:42:50,317] - [train.py line:73] :    == step: [200/391], train loss: 0.258 | train acc: 91.035% | lr: 0.100000
+[2019-08-09 10:42:57,630] - [train.py line:73] :    == step: [300/391], train loss: 0.259 | train acc: 90.969% | lr: 0.100000
+[2019-08-09 10:43:05,584] - [train.py line:77] :    == step: [391/391], train loss: 0.262 | train acc: 90.820% | lr: 0.100000
+[2019-08-09 10:43:10,824] - [train.py line:80] :    == cost time: 32.6716s
+[2019-08-09 10:43:10,825] - [train.py line:37] :  === Epoch: [58/250] === 
+[2019-08-09 10:43:17,407] - [train.py line:73] :    == step: [100/391], train loss: 0.242 | train acc: 91.555% | lr: 0.100000
+[2019-08-09 10:43:25,426] - [train.py line:73] :    == step: [200/391], train loss: 0.255 | train acc: 91.105% | lr: 0.100000
+[2019-08-09 10:43:31,593] - [train.py line:73] :    == step: [300/391], train loss: 0.259 | train acc: 90.924% | lr: 0.100000
+[2019-08-09 10:43:37,266] - [train.py line:77] :    == step: [391/391], train loss: 0.260 | train acc: 90.916% | lr: 0.100000
+[2019-08-09 10:43:37,266] - [train.py line:80] :    == cost time: 26.4412s
+[2019-08-09 10:43:37,267] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:43:39,241] - [train.py line:110] :    == test loss: 0.434 | test acc: 86.190%
+[2019-08-09 10:43:39,278] - [train.py line:37] :  === Epoch: [59/250] === 
+[2019-08-09 10:43:45,919] - [train.py line:73] :    == step: [100/391], train loss: 0.243 | train acc: 91.414% | lr: 0.100000
+[2019-08-09 10:43:52,111] - [train.py line:73] :    == step: [200/391], train loss: 0.251 | train acc: 91.211% | lr: 0.100000
+[2019-08-09 10:43:58,326] - [train.py line:73] :    == step: [300/391], train loss: 0.254 | train acc: 91.029% | lr: 0.100000
+[2019-08-09 10:44:04,077] - [train.py line:77] :    == step: [391/391], train loss: 0.257 | train acc: 90.966% | lr: 0.100000
+[2019-08-09 10:44:04,079] - [train.py line:80] :    == cost time: 24.8009s
+[2019-08-09 10:44:04,080] - [train.py line:37] :  === Epoch: [60/250] === 
+[2019-08-09 10:44:10,660] - [train.py line:73] :    == step: [100/391], train loss: 0.246 | train acc: 91.391% | lr: 0.100000
+[2019-08-09 10:44:16,898] - [train.py line:73] :    == step: [200/391], train loss: 0.249 | train acc: 91.195% | lr: 0.100000
+[2019-08-09 10:44:23,115] - [train.py line:73] :    == step: [300/391], train loss: 0.255 | train acc: 91.023% | lr: 0.100000
+[2019-08-09 10:44:28,871] - [train.py line:77] :    == step: [391/391], train loss: 0.260 | train acc: 90.898% | lr: 0.100000
+[2019-08-09 10:44:28,871] - [train.py line:80] :    == cost time: 24.7920s
+[2019-08-09 10:44:28,872] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:44:30,628] - [train.py line:110] :    == test loss: 0.465 | test acc: 85.300%
+[2019-08-09 10:44:30,665] - [train.py line:37] :  === Epoch: [61/250] === 
+[2019-08-09 10:44:37,289] - [train.py line:73] :    == step: [100/391], train loss: 0.240 | train acc: 91.602% | lr: 0.100000
+[2019-08-09 10:44:43,482] - [train.py line:73] :    == step: [200/391], train loss: 0.255 | train acc: 91.004% | lr: 0.100000
+[2019-08-09 10:44:49,699] - [train.py line:73] :    == step: [300/391], train loss: 0.255 | train acc: 90.961% | lr: 0.100000
+[2019-08-09 10:44:55,315] - [train.py line:77] :    == step: [391/391], train loss: 0.256 | train acc: 90.908% | lr: 0.100000
+[2019-08-09 10:44:55,316] - [train.py line:80] :    == cost time: 24.6513s
+[2019-08-09 10:44:55,317] - [train.py line:37] :  === Epoch: [62/250] === 
+[2019-08-09 10:45:01,824] - [train.py line:73] :    == step: [100/391], train loss: 0.246 | train acc: 91.219% | lr: 0.100000
+[2019-08-09 10:45:08,082] - [train.py line:73] :    == step: [200/391], train loss: 0.251 | train acc: 91.023% | lr: 0.100000
+[2019-08-09 10:45:17,779] - [train.py line:73] :    == step: [300/391], train loss: 0.252 | train acc: 91.135% | lr: 0.100000
+[2019-08-09 10:45:23,431] - [train.py line:77] :    == step: [391/391], train loss: 0.256 | train acc: 90.952% | lr: 0.100000
+[2019-08-09 10:45:23,431] - [train.py line:80] :    == cost time: 28.1153s
+[2019-08-09 10:45:23,432] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:45:25,317] - [train.py line:110] :    == test loss: 0.424 | test acc: 86.390%
+[2019-08-09 10:45:25,347] - [train.py line:37] :  === Epoch: [63/250] === 
+[2019-08-09 10:45:31,885] - [train.py line:73] :    == step: [100/391], train loss: 0.238 | train acc: 92.094% | lr: 0.100000
+[2019-08-09 10:45:38,096] - [train.py line:73] :    == step: [200/391], train loss: 0.248 | train acc: 91.516% | lr: 0.100000
+[2019-08-09 10:45:44,341] - [train.py line:73] :    == step: [300/391], train loss: 0.256 | train acc: 91.260% | lr: 0.100000
+[2019-08-09 10:45:52,529] - [train.py line:77] :    == step: [391/391], train loss: 0.257 | train acc: 91.092% | lr: 0.100000
+[2019-08-09 10:45:52,530] - [train.py line:80] :    == cost time: 27.1833s
+[2019-08-09 10:45:52,530] - [train.py line:37] :  === Epoch: [64/250] === 
+[2019-08-09 10:45:58,999] - [train.py line:73] :    == step: [100/391], train loss: 0.241 | train acc: 91.352% | lr: 0.100000
+[2019-08-09 10:46:05,147] - [train.py line:73] :    == step: [200/391], train loss: 0.243 | train acc: 91.457% | lr: 0.100000
+[2019-08-09 10:46:11,466] - [train.py line:73] :    == step: [300/391], train loss: 0.245 | train acc: 91.380% | lr: 0.100000
+[2019-08-09 10:46:17,235] - [train.py line:77] :    == step: [391/391], train loss: 0.253 | train acc: 91.016% | lr: 0.100000
+[2019-08-09 10:46:17,235] - [train.py line:80] :    == cost time: 24.7053s
+[2019-08-09 10:46:17,236] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:46:19,287] - [train.py line:110] :    == test loss: 0.411 | test acc: 86.340%
+[2019-08-09 10:46:19,328] - [train.py line:37] :  === Epoch: [65/250] === 
+[2019-08-09 10:46:25,590] - [train.py line:73] :    == step: [100/391], train loss: 0.237 | train acc: 91.688% | lr: 0.100000
+[2019-08-09 10:46:31,906] - [train.py line:73] :    == step: [200/391], train loss: 0.241 | train acc: 91.543% | lr: 0.100000
+[2019-08-09 10:46:38,184] - [train.py line:73] :    == step: [300/391], train loss: 0.245 | train acc: 91.424% | lr: 0.100000
+[2019-08-09 10:46:43,947] - [train.py line:77] :    == step: [391/391], train loss: 0.252 | train acc: 91.104% | lr: 0.100000
+[2019-08-09 10:46:43,947] - [train.py line:80] :    == cost time: 24.6198s
+[2019-08-09 10:46:43,948] - [train.py line:37] :  === Epoch: [66/250] === 
+[2019-08-09 10:46:50,385] - [train.py line:73] :    == step: [100/391], train loss: 0.239 | train acc: 91.594% | lr: 0.100000
+[2019-08-09 10:46:56,644] - [train.py line:73] :    == step: [200/391], train loss: 0.246 | train acc: 91.355% | lr: 0.100000
+[2019-08-09 10:47:06,413] - [train.py line:73] :    == step: [300/391], train loss: 0.251 | train acc: 91.250% | lr: 0.100000
+[2019-08-09 10:47:17,141] - [train.py line:77] :    == step: [391/391], train loss: 0.254 | train acc: 91.168% | lr: 0.100000
+[2019-08-09 10:47:17,419] - [train.py line:80] :    == cost time: 33.4717s
+[2019-08-09 10:47:17,420] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:47:19,516] - [train.py line:110] :    == test loss: 0.414 | test acc: 86.370%
+[2019-08-09 10:47:19,551] - [train.py line:37] :  === Epoch: [67/250] === 
+[2019-08-09 10:47:26,062] - [train.py line:73] :    == step: [100/391], train loss: 0.231 | train acc: 91.633% | lr: 0.100000
+[2019-08-09 10:47:32,470] - [train.py line:73] :    == step: [200/391], train loss: 0.236 | train acc: 91.609% | lr: 0.100000
+[2019-08-09 10:47:38,680] - [train.py line:73] :    == step: [300/391], train loss: 0.244 | train acc: 91.333% | lr: 0.100000
+[2019-08-09 10:47:44,445] - [train.py line:77] :    == step: [391/391], train loss: 0.245 | train acc: 91.402% | lr: 0.100000
+[2019-08-09 10:47:44,445] - [train.py line:80] :    == cost time: 24.8942s
+[2019-08-09 10:47:44,446] - [train.py line:37] :  === Epoch: [68/250] === 
+[2019-08-09 10:47:51,060] - [train.py line:73] :    == step: [100/391], train loss: 0.240 | train acc: 91.844% | lr: 0.100000
+[2019-08-09 10:47:58,468] - [train.py line:73] :    == step: [200/391], train loss: 0.245 | train acc: 91.602% | lr: 0.100000
+[2019-08-09 10:48:06,320] - [train.py line:73] :    == step: [300/391], train loss: 0.246 | train acc: 91.482% | lr: 0.100000
+[2019-08-09 10:48:13,179] - [train.py line:77] :    == step: [391/391], train loss: 0.248 | train acc: 91.334% | lr: 0.100000
+[2019-08-09 10:48:13,180] - [train.py line:80] :    == cost time: 28.7348s
+[2019-08-09 10:48:13,181] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:48:15,270] - [train.py line:110] :    == test loss: 0.517 | test acc: 84.300%
+[2019-08-09 10:48:15,300] - [train.py line:37] :  === Epoch: [69/250] === 
+[2019-08-09 10:48:23,294] - [train.py line:73] :    == step: [100/391], train loss: 0.244 | train acc: 91.508% | lr: 0.100000
+[2019-08-09 10:48:31,035] - [train.py line:73] :    == step: [200/391], train loss: 0.241 | train acc: 91.559% | lr: 0.100000
+[2019-08-09 10:48:38,937] - [train.py line:73] :    == step: [300/391], train loss: 0.242 | train acc: 91.490% | lr: 0.100000
+[2019-08-09 10:48:46,393] - [train.py line:77] :    == step: [391/391], train loss: 0.245 | train acc: 91.392% | lr: 0.100000
+[2019-08-09 10:48:46,394] - [train.py line:80] :    == cost time: 31.0936s
+[2019-08-09 10:48:46,395] - [train.py line:37] :  === Epoch: [70/250] === 
+[2019-08-09 10:48:54,973] - [train.py line:73] :    == step: [100/391], train loss: 0.227 | train acc: 92.117% | lr: 0.100000
+[2019-08-09 10:49:03,188] - [train.py line:73] :    == step: [200/391], train loss: 0.241 | train acc: 91.559% | lr: 0.100000
+[2019-08-09 10:49:11,456] - [train.py line:73] :    == step: [300/391], train loss: 0.245 | train acc: 91.432% | lr: 0.100000
+[2019-08-09 10:49:19,135] - [train.py line:77] :    == step: [391/391], train loss: 0.250 | train acc: 91.240% | lr: 0.100000
+[2019-08-09 10:49:19,136] - [train.py line:80] :    == cost time: 32.7416s
+[2019-08-09 10:49:19,136] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:49:21,566] - [train.py line:110] :    == test loss: 0.426 | test acc: 86.500%
+[2019-08-09 10:49:21,627] - [train.py line:37] :  === Epoch: [71/250] === 
+[2019-08-09 10:49:30,299] - [train.py line:73] :    == step: [100/391], train loss: 0.243 | train acc: 91.523% | lr: 0.100000
+[2019-08-09 10:49:38,542] - [train.py line:73] :    == step: [200/391], train loss: 0.240 | train acc: 91.555% | lr: 0.100000
+[2019-08-09 10:49:46,769] - [train.py line:73] :    == step: [300/391], train loss: 0.241 | train acc: 91.510% | lr: 0.100000
+[2019-08-09 10:50:07,861] - [train.py line:77] :    == step: [391/391], train loss: 0.244 | train acc: 91.448% | lr: 0.100000
+[2019-08-09 10:50:08,937] - [train.py line:80] :    == cost time: 47.3100s
+[2019-08-09 10:50:08,938] - [train.py line:37] :  === Epoch: [72/250] === 
+[2019-08-09 10:50:17,203] - [train.py line:73] :    == step: [100/391], train loss: 0.252 | train acc: 90.914% | lr: 0.100000
+[2019-08-09 10:50:25,268] - [train.py line:73] :    == step: [200/391], train loss: 0.247 | train acc: 91.215% | lr: 0.100000
+[2019-08-09 10:50:33,333] - [train.py line:73] :    == step: [300/391], train loss: 0.248 | train acc: 91.253% | lr: 0.100000
+[2019-08-09 10:50:40,782] - [train.py line:77] :    == step: [391/391], train loss: 0.250 | train acc: 91.166% | lr: 0.100000
+[2019-08-09 10:50:40,783] - [train.py line:80] :    == cost time: 31.8456s
+[2019-08-09 10:50:40,783] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:50:43,382] - [train.py line:110] :    == test loss: 0.368 | test acc: 87.980%
+[2019-08-09 10:50:43,447] - [train.py line:37] :  === Epoch: [73/250] === 
+[2019-08-09 10:50:51,044] - [train.py line:73] :    == step: [100/391], train loss: 0.236 | train acc: 91.773% | lr: 0.100000
+[2019-08-09 10:51:02,829] - [train.py line:73] :    == step: [200/391], train loss: 0.240 | train acc: 91.605% | lr: 0.100000
+[2019-08-09 10:51:10,871] - [train.py line:73] :    == step: [300/391], train loss: 0.239 | train acc: 91.688% | lr: 0.100000
+[2019-08-09 10:51:18,260] - [train.py line:77] :    == step: [391/391], train loss: 0.242 | train acc: 91.536% | lr: 0.100000
+[2019-08-09 10:51:18,261] - [train.py line:80] :    == cost time: 34.8148s
+[2019-08-09 10:51:18,262] - [train.py line:37] :  === Epoch: [74/250] === 
+[2019-08-09 10:51:26,711] - [train.py line:73] :    == step: [100/391], train loss: 0.243 | train acc: 91.312% | lr: 0.100000
+[2019-08-09 10:51:34,922] - [train.py line:73] :    == step: [200/391], train loss: 0.242 | train acc: 91.523% | lr: 0.100000
+[2019-08-09 10:51:43,151] - [train.py line:73] :    == step: [300/391], train loss: 0.245 | train acc: 91.464% | lr: 0.100000
+[2019-08-09 10:52:04,270] - [train.py line:77] :    == step: [391/391], train loss: 0.246 | train acc: 91.438% | lr: 0.100000
+[2019-08-09 10:52:08,629] - [train.py line:80] :    == cost time: 50.3680s
+[2019-08-09 10:52:08,630] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:52:10,582] - [train.py line:110] :    == test loss: 0.376 | test acc: 87.940%
+[2019-08-09 10:52:10,644] - [train.py line:37] :  === Epoch: [75/250] === 
+[2019-08-09 10:52:19,254] - [train.py line:73] :    == step: [100/391], train loss: 0.245 | train acc: 91.344% | lr: 0.100000
+[2019-08-09 10:52:27,403] - [train.py line:73] :    == step: [200/391], train loss: 0.244 | train acc: 91.449% | lr: 0.100000
+[2019-08-09 10:52:35,398] - [train.py line:73] :    == step: [300/391], train loss: 0.246 | train acc: 91.435% | lr: 0.100000
+[2019-08-09 10:52:42,930] - [train.py line:77] :    == step: [391/391], train loss: 0.244 | train acc: 91.518% | lr: 0.100000
+[2019-08-09 10:52:42,931] - [train.py line:80] :    == cost time: 32.2875s
+[2019-08-09 10:52:42,932] - [train.py line:37] :  === Epoch: [76/250] === 
+[2019-08-09 10:52:51,480] - [train.py line:73] :    == step: [100/391], train loss: 0.234 | train acc: 91.867% | lr: 0.100000
+[2019-08-09 10:52:59,778] - [train.py line:73] :    == step: [200/391], train loss: 0.237 | train acc: 91.684% | lr: 0.100000
+[2019-08-09 10:53:07,821] - [train.py line:73] :    == step: [300/391], train loss: 0.240 | train acc: 91.693% | lr: 0.100000
+[2019-08-09 10:53:33,316] - [train.py line:77] :    == step: [391/391], train loss: 0.243 | train acc: 91.584% | lr: 0.100000
+[2019-08-09 10:53:33,642] - [train.py line:80] :    == cost time: 50.7111s
+[2019-08-09 10:53:33,643] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:53:35,900] - [train.py line:110] :    == test loss: 0.532 | test acc: 83.980%
+[2019-08-09 10:53:35,933] - [train.py line:37] :  === Epoch: [77/250] === 
+[2019-08-09 10:53:44,380] - [train.py line:73] :    == step: [100/391], train loss: 0.229 | train acc: 92.062% | lr: 0.100000
+[2019-08-09 10:53:52,497] - [train.py line:73] :    == step: [200/391], train loss: 0.235 | train acc: 91.789% | lr: 0.100000
+[2019-08-09 10:54:00,695] - [train.py line:73] :    == step: [300/391], train loss: 0.240 | train acc: 91.544% | lr: 0.100000
+[2019-08-09 10:54:24,915] - [train.py line:77] :    == step: [391/391], train loss: 0.245 | train acc: 91.408% | lr: 0.100000
+[2019-08-09 10:54:26,276] - [train.py line:80] :    == cost time: 50.3436s
+[2019-08-09 10:54:26,278] - [train.py line:37] :  === Epoch: [78/250] === 
+[2019-08-09 10:54:34,209] - [train.py line:73] :    == step: [100/391], train loss: 0.228 | train acc: 91.875% | lr: 0.100000
+[2019-08-09 10:54:42,599] - [train.py line:73] :    == step: [200/391], train loss: 0.236 | train acc: 91.566% | lr: 0.100000
+[2019-08-09 10:54:50,804] - [train.py line:73] :    == step: [300/391], train loss: 0.238 | train acc: 91.549% | lr: 0.100000
+[2019-08-09 10:54:58,474] - [train.py line:77] :    == step: [391/391], train loss: 0.240 | train acc: 91.498% | lr: 0.100000
+[2019-08-09 10:54:58,475] - [train.py line:80] :    == cost time: 32.1980s
+[2019-08-09 10:54:58,476] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:55:01,006] - [train.py line:110] :    == test loss: 0.445 | test acc: 85.780%
+[2019-08-09 10:55:01,048] - [train.py line:37] :  === Epoch: [79/250] === 
+[2019-08-09 10:55:09,730] - [train.py line:73] :    == step: [100/391], train loss: 0.237 | train acc: 91.695% | lr: 0.100000
+[2019-08-09 10:55:17,481] - [train.py line:73] :    == step: [200/391], train loss: 0.242 | train acc: 91.453% | lr: 0.100000
+[2019-08-09 10:55:24,908] - [train.py line:73] :    == step: [300/391], train loss: 0.242 | train acc: 91.523% | lr: 0.100000
+[2019-08-09 10:55:36,553] - [train.py line:77] :    == step: [391/391], train loss: 0.242 | train acc: 91.526% | lr: 0.100000
+[2019-08-09 10:55:36,554] - [train.py line:80] :    == cost time: 35.5068s
+[2019-08-09 10:55:36,555] - [train.py line:37] :  === Epoch: [80/250] === 
+[2019-08-09 10:55:44,801] - [train.py line:73] :    == step: [100/391], train loss: 0.235 | train acc: 91.609% | lr: 0.100000
+[2019-08-09 10:55:52,959] - [train.py line:73] :    == step: [200/391], train loss: 0.242 | train acc: 91.504% | lr: 0.100000
+[2019-08-09 10:56:01,159] - [train.py line:73] :    == step: [300/391], train loss: 0.243 | train acc: 91.505% | lr: 0.100000
+[2019-08-09 10:56:08,453] - [train.py line:77] :    == step: [391/391], train loss: 0.248 | train acc: 91.352% | lr: 0.100000
+[2019-08-09 10:56:08,454] - [train.py line:80] :    == cost time: 31.8998s
+[2019-08-09 10:56:08,456] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:56:10,745] - [train.py line:110] :    == test loss: 0.438 | test acc: 86.390%
+[2019-08-09 10:56:10,777] - [train.py line:37] :  === Epoch: [81/250] === 
+[2019-08-09 10:56:19,307] - [train.py line:73] :    == step: [100/391], train loss: 0.225 | train acc: 92.117% | lr: 0.100000
+[2019-08-09 10:56:27,449] - [train.py line:73] :    == step: [200/391], train loss: 0.229 | train acc: 91.965% | lr: 0.100000
+[2019-08-09 10:56:35,611] - [train.py line:73] :    == step: [300/391], train loss: 0.235 | train acc: 91.820% | lr: 0.100000
+[2019-08-09 10:56:42,995] - [train.py line:77] :    == step: [391/391], train loss: 0.238 | train acc: 91.722% | lr: 0.100000
+[2019-08-09 10:56:42,995] - [train.py line:80] :    == cost time: 32.2182s
+[2019-08-09 10:56:42,996] - [train.py line:37] :  === Epoch: [82/250] === 
+[2019-08-09 10:56:51,336] - [train.py line:73] :    == step: [100/391], train loss: 0.227 | train acc: 92.211% | lr: 0.100000
+[2019-08-09 10:56:59,436] - [train.py line:73] :    == step: [200/391], train loss: 0.239 | train acc: 91.672% | lr: 0.100000
+[2019-08-09 10:57:07,688] - [train.py line:73] :    == step: [300/391], train loss: 0.241 | train acc: 91.523% | lr: 0.100000
+[2019-08-09 10:57:17,418] - [train.py line:77] :    == step: [391/391], train loss: 0.243 | train acc: 91.484% | lr: 0.100000
+[2019-08-09 10:57:17,419] - [train.py line:80] :    == cost time: 34.4233s
+[2019-08-09 10:57:17,419] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:57:19,878] - [train.py line:110] :    == test loss: 0.441 | test acc: 86.770%
+[2019-08-09 10:57:19,920] - [train.py line:37] :  === Epoch: [83/250] === 
+[2019-08-09 10:57:28,361] - [train.py line:73] :    == step: [100/391], train loss: 0.225 | train acc: 92.023% | lr: 0.100000
+[2019-08-09 10:57:36,721] - [train.py line:73] :    == step: [200/391], train loss: 0.231 | train acc: 91.906% | lr: 0.100000
+[2019-08-09 10:57:44,727] - [train.py line:73] :    == step: [300/391], train loss: 0.231 | train acc: 91.948% | lr: 0.100000
+[2019-08-09 10:57:52,335] - [train.py line:77] :    == step: [391/391], train loss: 0.238 | train acc: 91.770% | lr: 0.100000
+[2019-08-09 10:57:52,336] - [train.py line:80] :    == cost time: 32.4167s
+[2019-08-09 10:57:52,336] - [train.py line:37] :  === Epoch: [84/250] === 
+[2019-08-09 10:58:00,859] - [train.py line:73] :    == step: [100/391], train loss: 0.209 | train acc: 92.625% | lr: 0.100000
+[2019-08-09 10:58:09,088] - [train.py line:73] :    == step: [200/391], train loss: 0.224 | train acc: 92.012% | lr: 0.100000
+[2019-08-09 10:58:17,274] - [train.py line:73] :    == step: [300/391], train loss: 0.232 | train acc: 91.753% | lr: 0.100000
+[2019-08-09 10:58:24,644] - [train.py line:77] :    == step: [391/391], train loss: 0.237 | train acc: 91.556% | lr: 0.100000
+[2019-08-09 10:58:24,645] - [train.py line:80] :    == cost time: 32.3087s
+[2019-08-09 10:58:24,645] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:58:27,116] - [train.py line:110] :    == test loss: 0.525 | test acc: 84.710%
+[2019-08-09 10:58:27,153] - [train.py line:37] :  === Epoch: [85/250] === 
+[2019-08-09 10:58:35,550] - [train.py line:73] :    == step: [100/391], train loss: 0.222 | train acc: 92.289% | lr: 0.100000
+[2019-08-09 10:58:43,732] - [train.py line:73] :    == step: [200/391], train loss: 0.233 | train acc: 91.832% | lr: 0.100000
+[2019-08-09 10:58:51,885] - [train.py line:73] :    == step: [300/391], train loss: 0.237 | train acc: 91.690% | lr: 0.100000
+[2019-08-09 10:58:59,313] - [train.py line:77] :    == step: [391/391], train loss: 0.239 | train acc: 91.660% | lr: 0.100000
+[2019-08-09 10:58:59,313] - [train.py line:80] :    == cost time: 32.1610s
+[2019-08-09 10:58:59,314] - [train.py line:37] :  === Epoch: [86/250] === 
+[2019-08-09 10:59:07,796] - [train.py line:73] :    == step: [100/391], train loss: 0.224 | train acc: 92.211% | lr: 0.100000
+[2019-08-09 10:59:16,007] - [train.py line:73] :    == step: [200/391], train loss: 0.233 | train acc: 91.754% | lr: 0.100000
+[2019-08-09 10:59:27,464] - [train.py line:73] :    == step: [300/391], train loss: 0.236 | train acc: 91.674% | lr: 0.100000
+[2019-08-09 10:59:34,950] - [train.py line:77] :    == step: [391/391], train loss: 0.235 | train acc: 91.748% | lr: 0.100000
+[2019-08-09 10:59:34,951] - [train.py line:80] :    == cost time: 35.6371s
+[2019-08-09 10:59:34,951] - [train.py line:96] :  === Validate ===
+[2019-08-09 10:59:37,428] - [train.py line:110] :    == test loss: 0.395 | test acc: 87.330%
+[2019-08-09 10:59:37,464] - [train.py line:37] :  === Epoch: [87/250] === 
+[2019-08-09 10:59:45,300] - [train.py line:73] :    == step: [100/391], train loss: 0.221 | train acc: 92.414% | lr: 0.100000
+[2019-08-09 10:59:54,485] - [train.py line:73] :    == step: [200/391], train loss: 0.231 | train acc: 92.051% | lr: 0.100000
+[2019-08-09 11:00:04,510] - [train.py line:73] :    == step: [300/391], train loss: 0.237 | train acc: 91.745% | lr: 0.100000
+[2019-08-09 11:00:13,044] - [train.py line:77] :    == step: [391/391], train loss: 0.237 | train acc: 91.702% | lr: 0.100000
+[2019-08-09 11:00:13,178] - [train.py line:80] :    == cost time: 35.7142s
+[2019-08-09 11:00:13,179] - [train.py line:37] :  === Epoch: [88/250] === 
+[2019-08-09 11:00:21,047] - [train.py line:73] :    == step: [100/391], train loss: 0.223 | train acc: 92.195% | lr: 0.100000
+[2019-08-09 11:00:29,047] - [train.py line:73] :    == step: [200/391], train loss: 0.231 | train acc: 92.008% | lr: 0.100000
+[2019-08-09 11:00:41,909] - [train.py line:73] :    == step: [300/391], train loss: 0.237 | train acc: 91.786% | lr: 0.100000
+[2019-08-09 11:00:49,334] - [train.py line:77] :    == step: [391/391], train loss: 0.237 | train acc: 91.804% | lr: 0.100000
+[2019-08-09 11:00:49,335] - [train.py line:80] :    == cost time: 36.1565s
+[2019-08-09 11:00:49,336] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:00:51,749] - [train.py line:110] :    == test loss: 0.461 | test acc: 86.420%
+[2019-08-09 11:00:51,809] - [train.py line:37] :  === Epoch: [89/250] === 
+[2019-08-09 11:00:59,993] - [train.py line:73] :    == step: [100/391], train loss: 0.222 | train acc: 92.398% | lr: 0.100000
+[2019-08-09 11:01:08,139] - [train.py line:73] :    == step: [200/391], train loss: 0.225 | train acc: 92.125% | lr: 0.100000
+[2019-08-09 11:01:16,364] - [train.py line:73] :    == step: [300/391], train loss: 0.230 | train acc: 92.060% | lr: 0.100000
+[2019-08-09 11:01:23,798] - [train.py line:77] :    == step: [391/391], train loss: 0.235 | train acc: 91.822% | lr: 0.100000
+[2019-08-09 11:01:23,799] - [train.py line:80] :    == cost time: 31.9909s
+[2019-08-09 11:01:23,800] - [train.py line:37] :  === Epoch: [90/250] === 
+[2019-08-09 11:01:32,048] - [train.py line:73] :    == step: [100/391], train loss: 0.218 | train acc: 92.406% | lr: 0.100000
+[2019-08-09 11:01:39,943] - [train.py line:73] :    == step: [200/391], train loss: 0.223 | train acc: 92.207% | lr: 0.100000
+[2019-08-09 11:01:48,218] - [train.py line:73] :    == step: [300/391], train loss: 0.231 | train acc: 91.909% | lr: 0.100000
+[2019-08-09 11:02:14,171] - [train.py line:77] :    == step: [391/391], train loss: 0.232 | train acc: 91.818% | lr: 0.100000
+[2019-08-09 11:02:15,051] - [train.py line:80] :    == cost time: 51.2513s
+[2019-08-09 11:02:15,052] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:02:17,554] - [train.py line:110] :    == test loss: 0.506 | test acc: 85.010%
+[2019-08-09 11:02:17,587] - [train.py line:37] :  === Epoch: [91/250] === 
+[2019-08-09 11:02:26,102] - [train.py line:73] :    == step: [100/391], train loss: 0.221 | train acc: 92.156% | lr: 0.100000
+[2019-08-09 11:02:34,342] - [train.py line:73] :    == step: [200/391], train loss: 0.230 | train acc: 91.953% | lr: 0.100000
+[2019-08-09 11:02:42,513] - [train.py line:73] :    == step: [300/391], train loss: 0.234 | train acc: 91.706% | lr: 0.100000
+[2019-08-09 11:02:49,996] - [train.py line:77] :    == step: [391/391], train loss: 0.235 | train acc: 91.690% | lr: 0.100000
+[2019-08-09 11:02:49,996] - [train.py line:80] :    == cost time: 32.4100s
+[2019-08-09 11:02:49,997] - [train.py line:37] :  === Epoch: [92/250] === 
+[2019-08-09 11:02:58,577] - [train.py line:73] :    == step: [100/391], train loss: 0.225 | train acc: 92.125% | lr: 0.100000
+[2019-08-09 11:03:06,805] - [train.py line:73] :    == step: [200/391], train loss: 0.232 | train acc: 91.820% | lr: 0.100000
+[2019-08-09 11:03:14,840] - [train.py line:73] :    == step: [300/391], train loss: 0.234 | train acc: 91.820% | lr: 0.100000
+[2019-08-09 11:03:34,011] - [train.py line:77] :    == step: [391/391], train loss: 0.235 | train acc: 91.720% | lr: 0.100000
+[2019-08-09 11:03:36,436] - [train.py line:80] :    == cost time: 46.4394s
+[2019-08-09 11:03:36,437] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:03:38,589] - [train.py line:110] :    == test loss: 0.441 | test acc: 86.270%
+[2019-08-09 11:03:38,625] - [train.py line:37] :  === Epoch: [93/250] === 
+[2019-08-09 11:03:47,092] - [train.py line:73] :    == step: [100/391], train loss: 0.217 | train acc: 92.172% | lr: 0.100000
+[2019-08-09 11:03:55,374] - [train.py line:73] :    == step: [200/391], train loss: 0.225 | train acc: 92.070% | lr: 0.100000
+[2019-08-09 11:04:03,290] - [train.py line:73] :    == step: [300/391], train loss: 0.230 | train acc: 92.026% | lr: 0.100000
+[2019-08-09 11:04:35,520] - [train.py line:77] :    == step: [391/391], train loss: 0.235 | train acc: 91.820% | lr: 0.100000
+[2019-08-09 11:04:35,521] - [train.py line:80] :    == cost time: 56.8963s
+[2019-08-09 11:04:35,521] - [train.py line:37] :  === Epoch: [94/250] === 
+[2019-08-09 11:04:43,559] - [train.py line:73] :    == step: [100/391], train loss: 0.226 | train acc: 92.273% | lr: 0.100000
+[2019-08-09 11:04:51,730] - [train.py line:73] :    == step: [200/391], train loss: 0.230 | train acc: 92.070% | lr: 0.100000
+[2019-08-09 11:04:59,732] - [train.py line:73] :    == step: [300/391], train loss: 0.231 | train acc: 91.987% | lr: 0.100000
+[2019-08-09 11:05:08,328] - [train.py line:77] :    == step: [391/391], train loss: 0.234 | train acc: 91.804% | lr: 0.100000
+[2019-08-09 11:05:10,714] - [train.py line:80] :    == cost time: 35.1935s
+[2019-08-09 11:05:10,715] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:05:14,300] - [train.py line:110] :    == test loss: 0.551 | test acc: 82.550%
+[2019-08-09 11:05:14,910] - [train.py line:37] :  === Epoch: [95/250] === 
+[2019-08-09 11:05:23,269] - [train.py line:73] :    == step: [100/391], train loss: 0.220 | train acc: 92.406% | lr: 0.100000
+[2019-08-09 11:05:31,601] - [train.py line:73] :    == step: [200/391], train loss: 0.228 | train acc: 92.027% | lr: 0.100000
+[2019-08-09 11:05:39,862] - [train.py line:73] :    == step: [300/391], train loss: 0.230 | train acc: 91.982% | lr: 0.100000
+[2019-08-09 11:05:47,364] - [train.py line:77] :    == step: [391/391], train loss: 0.229 | train acc: 91.962% | lr: 0.100000
+[2019-08-09 11:05:47,365] - [train.py line:80] :    == cost time: 32.4550s
+[2019-08-09 11:05:47,365] - [train.py line:37] :  === Epoch: [96/250] === 
+[2019-08-09 11:05:55,989] - [train.py line:73] :    == step: [100/391], train loss: 0.229 | train acc: 92.141% | lr: 0.100000
+[2019-08-09 11:06:04,222] - [train.py line:73] :    == step: [200/391], train loss: 0.225 | train acc: 92.352% | lr: 0.100000
+[2019-08-09 11:06:12,360] - [train.py line:73] :    == step: [300/391], train loss: 0.232 | train acc: 91.977% | lr: 0.100000
+[2019-08-09 11:06:19,543] - [train.py line:77] :    == step: [391/391], train loss: 0.232 | train acc: 91.924% | lr: 0.100000
+[2019-08-09 11:06:19,544] - [train.py line:80] :    == cost time: 32.1792s
+[2019-08-09 11:06:19,545] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:06:21,967] - [train.py line:110] :    == test loss: 0.652 | test acc: 80.690%
+[2019-08-09 11:06:21,996] - [train.py line:37] :  === Epoch: [97/250] === 
+[2019-08-09 11:06:30,537] - [train.py line:73] :    == step: [100/391], train loss: 0.220 | train acc: 92.430% | lr: 0.100000
+[2019-08-09 11:06:38,943] - [train.py line:73] :    == step: [200/391], train loss: 0.221 | train acc: 92.230% | lr: 0.100000
+[2019-08-09 11:06:47,258] - [train.py line:73] :    == step: [300/391], train loss: 0.228 | train acc: 91.906% | lr: 0.100000
+[2019-08-09 11:06:54,668] - [train.py line:77] :    == step: [391/391], train loss: 0.232 | train acc: 91.736% | lr: 0.100000
+[2019-08-09 11:06:54,669] - [train.py line:80] :    == cost time: 32.6736s
+[2019-08-09 11:06:54,670] - [train.py line:37] :  === Epoch: [98/250] === 
+[2019-08-09 11:07:02,991] - [train.py line:73] :    == step: [100/391], train loss: 0.213 | train acc: 92.797% | lr: 0.100000
+[2019-08-09 11:07:11,073] - [train.py line:73] :    == step: [200/391], train loss: 0.228 | train acc: 92.125% | lr: 0.100000
+[2019-08-09 11:07:19,228] - [train.py line:73] :    == step: [300/391], train loss: 0.228 | train acc: 92.049% | lr: 0.100000
+[2019-08-09 11:07:26,668] - [train.py line:77] :    == step: [391/391], train loss: 0.231 | train acc: 91.890% | lr: 0.100000
+[2019-08-09 11:07:26,669] - [train.py line:80] :    == cost time: 31.9999s
+[2019-08-09 11:07:26,670] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:07:29,133] - [train.py line:110] :    == test loss: 0.449 | test acc: 85.900%
+[2019-08-09 11:07:29,182] - [train.py line:37] :  === Epoch: [99/250] === 
+[2019-08-09 11:07:37,874] - [train.py line:73] :    == step: [100/391], train loss: 0.226 | train acc: 92.141% | lr: 0.100000
+[2019-08-09 11:07:46,158] - [train.py line:73] :    == step: [200/391], train loss: 0.227 | train acc: 92.078% | lr: 0.100000
+[2019-08-09 11:07:54,387] - [train.py line:73] :    == step: [300/391], train loss: 0.229 | train acc: 92.060% | lr: 0.100000
+[2019-08-09 11:08:01,770] - [train.py line:77] :    == step: [391/391], train loss: 0.231 | train acc: 91.948% | lr: 0.100000
+[2019-08-09 11:08:01,771] - [train.py line:80] :    == cost time: 32.5898s
+[2019-08-09 11:08:01,772] - [train.py line:37] :  === Epoch: [100/250] === 
+[2019-08-09 11:08:10,297] - [train.py line:73] :    == step: [100/391], train loss: 0.215 | train acc: 92.438% | lr: 0.100000
+[2019-08-09 11:08:18,548] - [train.py line:73] :    == step: [200/391], train loss: 0.225 | train acc: 92.148% | lr: 0.100000
+[2019-08-09 11:08:26,859] - [train.py line:73] :    == step: [300/391], train loss: 0.223 | train acc: 92.242% | lr: 0.100000
+[2019-08-09 11:08:34,597] - [train.py line:77] :    == step: [391/391], train loss: 0.226 | train acc: 92.122% | lr: 0.100000
+[2019-08-09 11:08:34,597] - [train.py line:80] :    == cost time: 32.8256s
+[2019-08-09 11:08:34,598] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:08:37,094] - [train.py line:110] :    == test loss: 0.647 | test acc: 81.750%
+[2019-08-09 11:08:37,177] - [train.py line:37] :  === Epoch: [101/250] === 
+[2019-08-09 11:08:45,465] - [train.py line:73] :    == step: [100/391], train loss: 0.169 | train acc: 94.133% | lr: 0.010000
+[2019-08-09 11:08:53,623] - [train.py line:73] :    == step: [200/391], train loss: 0.154 | train acc: 94.742% | lr: 0.010000
+[2019-08-09 11:09:01,868] - [train.py line:73] :    == step: [300/391], train loss: 0.148 | train acc: 94.961% | lr: 0.010000
+[2019-08-09 11:09:09,437] - [train.py line:77] :    == step: [391/391], train loss: 0.143 | train acc: 95.108% | lr: 0.010000
+[2019-08-09 11:09:09,438] - [train.py line:80] :    == cost time: 32.2616s
+[2019-08-09 11:09:09,439] - [train.py line:37] :  === Epoch: [102/250] === 
+[2019-08-09 11:09:17,820] - [train.py line:73] :    == step: [100/391], train loss: 0.113 | train acc: 96.219% | lr: 0.010000
+[2019-08-09 11:09:25,998] - [train.py line:73] :    == step: [200/391], train loss: 0.112 | train acc: 96.160% | lr: 0.010000
+[2019-08-09 11:09:34,319] - [train.py line:73] :    == step: [300/391], train loss: 0.111 | train acc: 96.250% | lr: 0.010000
+[2019-08-09 11:09:41,681] - [train.py line:77] :    == step: [391/391], train loss: 0.113 | train acc: 96.228% | lr: 0.010000
+[2019-08-09 11:09:41,690] - [train.py line:80] :    == cost time: 32.2512s
+[2019-08-09 11:09:41,691] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:09:48,940] - [train.py line:110] :    == test loss: 0.268 | test acc: 91.280%
+[2019-08-09 11:10:10,141] - [train.py line:37] :  === Epoch: [103/250] === 
+[2019-08-09 11:10:18,929] - [train.py line:73] :    == step: [100/391], train loss: 0.099 | train acc: 96.852% | lr: 0.010000
+[2019-08-09 11:10:27,119] - [train.py line:73] :    == step: [200/391], train loss: 0.099 | train acc: 96.777% | lr: 0.010000
+[2019-08-09 11:10:35,243] - [train.py line:73] :    == step: [300/391], train loss: 0.099 | train acc: 96.737% | lr: 0.010000
+[2019-08-09 11:10:42,742] - [train.py line:77] :    == step: [391/391], train loss: 0.100 | train acc: 96.700% | lr: 0.010000
+[2019-08-09 11:10:42,742] - [train.py line:80] :    == cost time: 32.6026s
+[2019-08-09 11:10:42,743] - [train.py line:37] :  === Epoch: [104/250] === 
+[2019-08-09 11:10:51,291] - [train.py line:73] :    == step: [100/391], train loss: 0.090 | train acc: 96.977% | lr: 0.010000
+[2019-08-09 11:10:59,590] - [train.py line:73] :    == step: [200/391], train loss: 0.093 | train acc: 96.949% | lr: 0.010000
+[2019-08-09 11:11:07,329] - [train.py line:73] :    == step: [300/391], train loss: 0.092 | train acc: 96.914% | lr: 0.010000
+[2019-08-09 11:11:14,509] - [train.py line:77] :    == step: [391/391], train loss: 0.094 | train acc: 96.856% | lr: 0.010000
+[2019-08-09 11:11:14,509] - [train.py line:80] :    == cost time: 31.7666s
+[2019-08-09 11:11:14,510] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:11:16,965] - [train.py line:110] :    == test loss: 0.272 | test acc: 91.530%
+[2019-08-09 11:11:17,071] - [train.py line:37] :  === Epoch: [105/250] === 
+[2019-08-09 11:11:25,731] - [train.py line:73] :    == step: [100/391], train loss: 0.084 | train acc: 97.195% | lr: 0.010000
+[2019-08-09 11:11:33,878] - [train.py line:73] :    == step: [200/391], train loss: 0.087 | train acc: 97.074% | lr: 0.010000
+[2019-08-09 11:11:42,029] - [train.py line:73] :    == step: [300/391], train loss: 0.086 | train acc: 97.096% | lr: 0.010000
+[2019-08-09 11:11:49,686] - [train.py line:77] :    == step: [391/391], train loss: 0.086 | train acc: 97.056% | lr: 0.010000
+[2019-08-09 11:11:49,694] - [train.py line:80] :    == cost time: 32.6239s
+[2019-08-09 11:11:49,695] - [train.py line:37] :  === Epoch: [106/250] === 
+[2019-08-09 11:11:58,168] - [train.py line:73] :    == step: [100/391], train loss: 0.078 | train acc: 97.391% | lr: 0.010000
+[2019-08-09 11:12:06,781] - [train.py line:73] :    == step: [200/391], train loss: 0.080 | train acc: 97.270% | lr: 0.010000
+[2019-08-09 11:12:14,122] - [train.py line:73] :    == step: [300/391], train loss: 0.082 | train acc: 97.128% | lr: 0.010000
+[2019-08-09 11:12:26,301] - [train.py line:77] :    == step: [391/391], train loss: 0.081 | train acc: 97.172% | lr: 0.010000
+[2019-08-09 11:12:26,326] - [train.py line:80] :    == cost time: 36.6316s
+[2019-08-09 11:12:26,327] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:12:28,872] - [train.py line:110] :    == test loss: 0.280 | test acc: 91.370%
+[2019-08-09 11:12:29,195] - [train.py line:37] :  === Epoch: [107/250] === 
+[2019-08-09 11:12:36,896] - [train.py line:73] :    == step: [100/391], train loss: 0.080 | train acc: 97.211% | lr: 0.010000
+[2019-08-09 11:12:44,268] - [train.py line:73] :    == step: [200/391], train loss: 0.080 | train acc: 97.262% | lr: 0.010000
+[2019-08-09 11:12:52,078] - [train.py line:73] :    == step: [300/391], train loss: 0.080 | train acc: 97.253% | lr: 0.010000
+[2019-08-09 11:12:58,351] - [train.py line:77] :    == step: [391/391], train loss: 0.079 | train acc: 97.270% | lr: 0.010000
+[2019-08-09 11:12:58,351] - [train.py line:80] :    == cost time: 29.1574s
+[2019-08-09 11:12:58,352] - [train.py line:37] :  === Epoch: [108/250] === 
+[2019-08-09 11:13:06,898] - [train.py line:73] :    == step: [100/391], train loss: 0.074 | train acc: 97.453% | lr: 0.010000
+[2019-08-09 11:13:14,740] - [train.py line:73] :    == step: [200/391], train loss: 0.071 | train acc: 97.598% | lr: 0.010000
+[2019-08-09 11:13:23,048] - [train.py line:73] :    == step: [300/391], train loss: 0.073 | train acc: 97.534% | lr: 0.010000
+[2019-08-09 11:13:30,749] - [train.py line:77] :    == step: [391/391], train loss: 0.076 | train acc: 97.412% | lr: 0.010000
+[2019-08-09 11:13:30,749] - [train.py line:80] :    == cost time: 32.3976s
+[2019-08-09 11:13:30,750] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:13:34,558] - [train.py line:110] :    == test loss: 0.287 | test acc: 91.600%
+[2019-08-09 11:13:34,998] - [train.py line:37] :  === Epoch: [109/250] === 
+[2019-08-09 11:13:42,438] - [train.py line:73] :    == step: [100/391], train loss: 0.072 | train acc: 97.562% | lr: 0.010000
+[2019-08-09 11:13:50,685] - [train.py line:73] :    == step: [200/391], train loss: 0.072 | train acc: 97.602% | lr: 0.010000
+[2019-08-09 11:13:59,003] - [train.py line:73] :    == step: [300/391], train loss: 0.074 | train acc: 97.487% | lr: 0.010000
+[2019-08-09 11:14:07,318] - [train.py line:77] :    == step: [391/391], train loss: 0.075 | train acc: 97.454% | lr: 0.010000
+[2019-08-09 11:14:11,070] - [train.py line:80] :    == cost time: 36.0733s
+[2019-08-09 11:14:11,071] - [train.py line:37] :  === Epoch: [110/250] === 
+[2019-08-09 11:14:17,711] - [train.py line:73] :    == step: [100/391], train loss: 0.073 | train acc: 97.648% | lr: 0.010000
+[2019-08-09 11:14:43,721] - [train.py line:73] :    == step: [200/391], train loss: 0.070 | train acc: 97.648% | lr: 0.010000
+[2019-08-09 11:14:51,620] - [train.py line:73] :    == step: [300/391], train loss: 0.070 | train acc: 97.661% | lr: 0.010000
+[2019-08-09 11:14:58,592] - [train.py line:77] :    == step: [391/391], train loss: 0.071 | train acc: 97.616% | lr: 0.010000
+[2019-08-09 11:14:58,593] - [train.py line:80] :    == cost time: 47.5229s
+[2019-08-09 11:14:58,594] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:15:01,226] - [train.py line:110] :    == test loss: 0.283 | test acc: 91.720%
+[2019-08-09 11:15:01,281] - [train.py line:37] :  === Epoch: [111/250] === 
+[2019-08-09 11:15:09,411] - [train.py line:73] :    == step: [100/391], train loss: 0.064 | train acc: 97.828% | lr: 0.010000
+[2019-08-09 11:15:16,860] - [train.py line:73] :    == step: [200/391], train loss: 0.066 | train acc: 97.871% | lr: 0.010000
+[2019-08-09 11:15:25,024] - [train.py line:73] :    == step: [300/391], train loss: 0.067 | train acc: 97.781% | lr: 0.010000
+[2019-08-09 11:15:31,495] - [train.py line:77] :    == step: [391/391], train loss: 0.068 | train acc: 97.716% | lr: 0.010000
+[2019-08-09 11:15:31,495] - [train.py line:80] :    == cost time: 30.2148s
+[2019-08-09 11:15:31,496] - [train.py line:37] :  === Epoch: [112/250] === 
+[2019-08-09 11:15:40,049] - [train.py line:73] :    == step: [100/391], train loss: 0.064 | train acc: 97.781% | lr: 0.010000
+[2019-08-09 11:15:47,877] - [train.py line:73] :    == step: [200/391], train loss: 0.067 | train acc: 97.719% | lr: 0.010000
+[2019-08-09 11:15:55,709] - [train.py line:73] :    == step: [300/391], train loss: 0.067 | train acc: 97.724% | lr: 0.010000
+[2019-08-09 11:16:03,075] - [train.py line:77] :    == step: [391/391], train loss: 0.067 | train acc: 97.734% | lr: 0.010000
+[2019-08-09 11:16:03,076] - [train.py line:80] :    == cost time: 31.5806s
+[2019-08-09 11:16:03,077] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:16:05,544] - [train.py line:110] :    == test loss: 0.294 | test acc: 91.650%
+[2019-08-09 11:16:05,576] - [train.py line:37] :  === Epoch: [113/250] === 
+[2019-08-09 11:16:13,580] - [train.py line:73] :    == step: [100/391], train loss: 0.064 | train acc: 97.828% | lr: 0.010000
+[2019-08-09 11:16:20,763] - [train.py line:73] :    == step: [200/391], train loss: 0.064 | train acc: 97.832% | lr: 0.010000
+[2019-08-09 11:16:29,073] - [train.py line:73] :    == step: [300/391], train loss: 0.065 | train acc: 97.779% | lr: 0.010000
+[2019-08-09 11:16:36,150] - [train.py line:77] :    == step: [391/391], train loss: 0.065 | train acc: 97.752% | lr: 0.010000
+[2019-08-09 11:16:36,151] - [train.py line:80] :    == cost time: 30.5757s
+[2019-08-09 11:16:36,152] - [train.py line:37] :  === Epoch: [114/250] === 
+[2019-08-09 11:16:44,371] - [train.py line:73] :    == step: [100/391], train loss: 0.059 | train acc: 98.117% | lr: 0.010000
+[2019-08-09 11:16:52,168] - [train.py line:73] :    == step: [200/391], train loss: 0.060 | train acc: 98.102% | lr: 0.010000
+[2019-08-09 11:17:00,129] - [train.py line:73] :    == step: [300/391], train loss: 0.061 | train acc: 97.951% | lr: 0.010000
+[2019-08-09 11:17:10,204] - [train.py line:77] :    == step: [391/391], train loss: 0.063 | train acc: 97.854% | lr: 0.010000
+[2019-08-09 11:17:10,248] - [train.py line:80] :    == cost time: 34.0963s
+[2019-08-09 11:17:10,249] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:17:12,950] - [train.py line:110] :    == test loss: 0.295 | test acc: 91.660%
+[2019-08-09 11:17:12,985] - [train.py line:37] :  === Epoch: [115/250] === 
+[2019-08-09 11:17:21,535] - [train.py line:73] :    == step: [100/391], train loss: 0.057 | train acc: 98.070% | lr: 0.010000
+[2019-08-09 11:17:29,730] - [train.py line:73] :    == step: [200/391], train loss: 0.059 | train acc: 98.047% | lr: 0.010000
+[2019-08-09 11:17:37,907] - [train.py line:73] :    == step: [300/391], train loss: 0.060 | train acc: 98.047% | lr: 0.010000
+[2019-08-09 11:17:45,568] - [train.py line:77] :    == step: [391/391], train loss: 0.062 | train acc: 97.956% | lr: 0.010000
+[2019-08-09 11:17:45,568] - [train.py line:80] :    == cost time: 32.5839s
+[2019-08-09 11:17:45,569] - [train.py line:37] :  === Epoch: [116/250] === 
+[2019-08-09 11:17:54,133] - [train.py line:73] :    == step: [100/391], train loss: 0.054 | train acc: 98.195% | lr: 0.010000
+[2019-08-09 11:18:02,399] - [train.py line:73] :    == step: [200/391], train loss: 0.056 | train acc: 98.070% | lr: 0.010000
+[2019-08-09 11:18:10,538] - [train.py line:73] :    == step: [300/391], train loss: 0.056 | train acc: 98.122% | lr: 0.010000
+[2019-08-09 11:18:18,031] - [train.py line:77] :    == step: [391/391], train loss: 0.059 | train acc: 98.026% | lr: 0.010000
+[2019-08-09 11:18:18,032] - [train.py line:80] :    == cost time: 32.4636s
+[2019-08-09 11:18:18,033] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:18:20,539] - [train.py line:110] :    == test loss: 0.311 | test acc: 91.440%
+[2019-08-09 11:18:20,574] - [train.py line:37] :  === Epoch: [117/250] === 
+[2019-08-09 11:18:29,221] - [train.py line:73] :    == step: [100/391], train loss: 0.056 | train acc: 98.094% | lr: 0.010000
+[2019-08-09 11:18:37,470] - [train.py line:73] :    == step: [200/391], train loss: 0.056 | train acc: 98.125% | lr: 0.010000
+[2019-08-09 11:18:45,486] - [train.py line:73] :    == step: [300/391], train loss: 0.056 | train acc: 98.117% | lr: 0.010000
+[2019-08-09 11:18:52,978] - [train.py line:77] :    == step: [391/391], train loss: 0.056 | train acc: 98.152% | lr: 0.010000
+[2019-08-09 11:18:52,978] - [train.py line:80] :    == cost time: 32.4048s
+[2019-08-09 11:18:52,979] - [train.py line:37] :  === Epoch: [118/250] === 
+[2019-08-09 11:19:01,193] - [train.py line:73] :    == step: [100/391], train loss: 0.054 | train acc: 98.133% | lr: 0.010000
+[2019-08-09 11:19:09,394] - [train.py line:73] :    == step: [200/391], train loss: 0.054 | train acc: 98.215% | lr: 0.010000
+[2019-08-09 11:19:17,671] - [train.py line:73] :    == step: [300/391], train loss: 0.055 | train acc: 98.201% | lr: 0.010000
+[2019-08-09 11:19:24,982] - [train.py line:77] :    == step: [391/391], train loss: 0.056 | train acc: 98.196% | lr: 0.010000
+[2019-08-09 11:19:24,982] - [train.py line:80] :    == cost time: 32.0039s
+[2019-08-09 11:19:24,983] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:19:27,464] - [train.py line:110] :    == test loss: 0.310 | test acc: 91.360%
+[2019-08-09 11:19:27,499] - [train.py line:37] :  === Epoch: [119/250] === 
+[2019-08-09 11:19:36,088] - [train.py line:73] :    == step: [100/391], train loss: 0.053 | train acc: 98.250% | lr: 0.010000
+[2019-08-09 11:19:44,048] - [train.py line:73] :    == step: [200/391], train loss: 0.053 | train acc: 98.234% | lr: 0.010000
+[2019-08-09 11:19:52,319] - [train.py line:73] :    == step: [300/391], train loss: 0.054 | train acc: 98.161% | lr: 0.010000
+[2019-08-09 11:20:04,592] - [train.py line:77] :    == step: [391/391], train loss: 0.055 | train acc: 98.124% | lr: 0.010000
+[2019-08-09 11:20:04,592] - [train.py line:80] :    == cost time: 37.0936s
+[2019-08-09 11:20:04,593] - [train.py line:37] :  === Epoch: [120/250] === 
+[2019-08-09 11:20:12,908] - [train.py line:73] :    == step: [100/391], train loss: 0.052 | train acc: 98.297% | lr: 0.010000
+[2019-08-09 11:20:21,188] - [train.py line:73] :    == step: [200/391], train loss: 0.053 | train acc: 98.238% | lr: 0.010000
+[2019-08-09 11:20:29,491] - [train.py line:73] :    == step: [300/391], train loss: 0.052 | train acc: 98.294% | lr: 0.010000
+[2019-08-09 11:20:36,494] - [train.py line:77] :    == step: [391/391], train loss: 0.053 | train acc: 98.222% | lr: 0.010000
+[2019-08-09 11:20:36,495] - [train.py line:80] :    == cost time: 31.9021s
+[2019-08-09 11:20:36,496] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:20:39,029] - [train.py line:110] :    == test loss: 0.319 | test acc: 91.340%
+[2019-08-09 11:20:39,094] - [train.py line:37] :  === Epoch: [121/250] === 
+[2019-08-09 11:20:47,322] - [train.py line:73] :    == step: [100/391], train loss: 0.050 | train acc: 98.328% | lr: 0.010000
+[2019-08-09 11:20:55,549] - [train.py line:73] :    == step: [200/391], train loss: 0.052 | train acc: 98.188% | lr: 0.010000
+[2019-08-09 11:21:03,870] - [train.py line:73] :    == step: [300/391], train loss: 0.054 | train acc: 98.107% | lr: 0.010000
+[2019-08-09 11:21:10,723] - [train.py line:77] :    == step: [391/391], train loss: 0.052 | train acc: 98.182% | lr: 0.010000
+[2019-08-09 11:21:10,723] - [train.py line:80] :    == cost time: 31.6300s
+[2019-08-09 11:21:10,724] - [train.py line:37] :  === Epoch: [122/250] === 
+[2019-08-09 11:21:19,211] - [train.py line:73] :    == step: [100/391], train loss: 0.049 | train acc: 98.484% | lr: 0.010000
+[2019-08-09 11:21:27,379] - [train.py line:73] :    == step: [200/391], train loss: 0.051 | train acc: 98.289% | lr: 0.010000
+[2019-08-09 11:21:35,128] - [train.py line:73] :    == step: [300/391], train loss: 0.052 | train acc: 98.216% | lr: 0.010000
+[2019-08-09 11:21:42,538] - [train.py line:77] :    == step: [391/391], train loss: 0.053 | train acc: 98.198% | lr: 0.010000
+[2019-08-09 11:21:42,538] - [train.py line:80] :    == cost time: 31.8152s
+[2019-08-09 11:21:42,539] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:21:44,914] - [train.py line:110] :    == test loss: 0.310 | test acc: 91.710%
+[2019-08-09 11:21:44,942] - [train.py line:37] :  === Epoch: [123/250] === 
+[2019-08-09 11:21:53,231] - [train.py line:73] :    == step: [100/391], train loss: 0.048 | train acc: 98.414% | lr: 0.010000
+[2019-08-09 11:22:01,712] - [train.py line:73] :    == step: [200/391], train loss: 0.051 | train acc: 98.293% | lr: 0.010000
+[2019-08-09 11:22:14,447] - [train.py line:73] :    == step: [300/391], train loss: 0.051 | train acc: 98.242% | lr: 0.010000
+[2019-08-09 11:22:21,826] - [train.py line:77] :    == step: [391/391], train loss: 0.051 | train acc: 98.230% | lr: 0.010000
+[2019-08-09 11:22:21,827] - [train.py line:80] :    == cost time: 36.8848s
+[2019-08-09 11:22:21,828] - [train.py line:37] :  === Epoch: [124/250] === 
+[2019-08-09 11:22:30,388] - [train.py line:73] :    == step: [100/391], train loss: 0.046 | train acc: 98.492% | lr: 0.010000
+[2019-08-09 11:22:38,619] - [train.py line:73] :    == step: [200/391], train loss: 0.049 | train acc: 98.340% | lr: 0.010000
+[2019-08-09 11:22:46,633] - [train.py line:73] :    == step: [300/391], train loss: 0.050 | train acc: 98.310% | lr: 0.010000
+[2019-08-09 11:22:54,144] - [train.py line:77] :    == step: [391/391], train loss: 0.049 | train acc: 98.316% | lr: 0.010000
+[2019-08-09 11:22:54,144] - [train.py line:80] :    == cost time: 32.3174s
+[2019-08-09 11:22:54,145] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:22:56,476] - [train.py line:110] :    == test loss: 0.313 | test acc: 91.540%
+[2019-08-09 11:22:56,517] - [train.py line:37] :  === Epoch: [125/250] === 
+[2019-08-09 11:23:05,087] - [train.py line:73] :    == step: [100/391], train loss: 0.048 | train acc: 98.383% | lr: 0.010000
+[2019-08-09 11:23:13,344] - [train.py line:73] :    == step: [200/391], train loss: 0.049 | train acc: 98.402% | lr: 0.010000
+[2019-08-09 11:23:23,856] - [train.py line:73] :    == step: [300/391], train loss: 0.048 | train acc: 98.445% | lr: 0.010000
+[2019-08-09 11:23:36,626] - [train.py line:77] :    == step: [391/391], train loss: 0.049 | train acc: 98.404% | lr: 0.010000
+[2019-08-09 11:23:36,627] - [train.py line:80] :    == cost time: 40.1100s
+[2019-08-09 11:23:36,627] - [train.py line:37] :  === Epoch: [126/250] === 
+[2019-08-09 11:23:44,236] - [train.py line:73] :    == step: [100/391], train loss: 0.050 | train acc: 98.398% | lr: 0.010000
+[2019-08-09 11:23:52,801] - [train.py line:73] :    == step: [200/391], train loss: 0.048 | train acc: 98.480% | lr: 0.010000
+[2019-08-09 11:24:01,269] - [train.py line:73] :    == step: [300/391], train loss: 0.047 | train acc: 98.497% | lr: 0.010000
+[2019-08-09 11:24:18,170] - [train.py line:77] :    == step: [391/391], train loss: 0.046 | train acc: 98.458% | lr: 0.010000
+[2019-08-09 11:24:18,666] - [train.py line:80] :    == cost time: 42.0388s
+[2019-08-09 11:24:18,667] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:24:24,050] - [train.py line:110] :    == test loss: 0.315 | test acc: 91.570%
+[2019-08-09 11:24:24,293] - [train.py line:37] :  === Epoch: [127/250] === 
+[2019-08-09 11:24:32,747] - [train.py line:73] :    == step: [100/391], train loss: 0.041 | train acc: 98.703% | lr: 0.010000
+[2019-08-09 11:24:41,068] - [train.py line:73] :    == step: [200/391], train loss: 0.043 | train acc: 98.555% | lr: 0.010000
+[2019-08-09 11:24:49,570] - [train.py line:73] :    == step: [300/391], train loss: 0.044 | train acc: 98.536% | lr: 0.010000
+[2019-08-09 11:24:57,494] - [train.py line:77] :    == step: [391/391], train loss: 0.045 | train acc: 98.492% | lr: 0.010000
+[2019-08-09 11:24:57,495] - [train.py line:80] :    == cost time: 33.2025s
+[2019-08-09 11:24:57,497] - [train.py line:37] :  === Epoch: [128/250] === 
+[2019-08-09 11:25:06,289] - [train.py line:73] :    == step: [100/391], train loss: 0.047 | train acc: 98.375% | lr: 0.010000
+[2019-08-09 11:25:12,838] - [train.py line:73] :    == step: [200/391], train loss: 0.046 | train acc: 98.426% | lr: 0.010000
+[2019-08-09 11:25:20,232] - [train.py line:73] :    == step: [300/391], train loss: 0.046 | train acc: 98.424% | lr: 0.010000
+[2019-08-09 11:25:27,808] - [train.py line:77] :    == step: [391/391], train loss: 0.047 | train acc: 98.388% | lr: 0.010000
+[2019-08-09 11:25:27,809] - [train.py line:80] :    == cost time: 30.3128s
+[2019-08-09 11:25:27,809] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:25:30,440] - [train.py line:110] :    == test loss: 0.325 | test acc: 91.710%
+[2019-08-09 11:25:30,483] - [train.py line:37] :  === Epoch: [129/250] === 
+[2019-08-09 11:25:39,471] - [train.py line:73] :    == step: [100/391], train loss: 0.043 | train acc: 98.664% | lr: 0.010000
+[2019-08-09 11:25:48,011] - [train.py line:73] :    == step: [200/391], train loss: 0.044 | train acc: 98.562% | lr: 0.010000
+[2019-08-09 11:25:56,342] - [train.py line:73] :    == step: [300/391], train loss: 0.044 | train acc: 98.523% | lr: 0.010000
+[2019-08-09 11:26:07,426] - [train.py line:77] :    == step: [391/391], train loss: 0.044 | train acc: 98.534% | lr: 0.010000
+[2019-08-09 11:26:07,426] - [train.py line:80] :    == cost time: 36.9443s
+[2019-08-09 11:26:07,427] - [train.py line:37] :  === Epoch: [130/250] === 
+[2019-08-09 11:26:16,095] - [train.py line:73] :    == step: [100/391], train loss: 0.040 | train acc: 98.695% | lr: 0.010000
+[2019-08-09 11:26:24,687] - [train.py line:73] :    == step: [200/391], train loss: 0.040 | train acc: 98.707% | lr: 0.010000
+[2019-08-09 11:26:33,240] - [train.py line:73] :    == step: [300/391], train loss: 0.042 | train acc: 98.674% | lr: 0.010000
+[2019-08-09 11:26:41,341] - [train.py line:77] :    == step: [391/391], train loss: 0.043 | train acc: 98.578% | lr: 0.010000
+[2019-08-09 11:26:41,341] - [train.py line:80] :    == cost time: 33.9148s
+[2019-08-09 11:26:41,342] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:26:44,011] - [train.py line:110] :    == test loss: 0.323 | test acc: 91.390%
+[2019-08-09 11:26:44,055] - [train.py line:37] :  === Epoch: [131/250] === 
+[2019-08-09 11:26:53,001] - [train.py line:73] :    == step: [100/391], train loss: 0.039 | train acc: 98.805% | lr: 0.010000
+[2019-08-09 11:27:01,566] - [train.py line:73] :    == step: [200/391], train loss: 0.040 | train acc: 98.672% | lr: 0.010000
+[2019-08-09 11:27:10,131] - [train.py line:73] :    == step: [300/391], train loss: 0.041 | train acc: 98.589% | lr: 0.010000
+[2019-08-09 11:27:18,425] - [train.py line:77] :    == step: [391/391], train loss: 0.043 | train acc: 98.558% | lr: 0.010000
+[2019-08-09 11:27:18,426] - [train.py line:80] :    == cost time: 34.3717s
+[2019-08-09 11:27:18,427] - [train.py line:37] :  === Epoch: [132/250] === 
+[2019-08-09 11:27:27,229] - [train.py line:73] :    == step: [100/391], train loss: 0.041 | train acc: 98.680% | lr: 0.010000
+[2019-08-09 11:27:35,751] - [train.py line:73] :    == step: [200/391], train loss: 0.042 | train acc: 98.684% | lr: 0.010000
+[2019-08-09 11:27:44,190] - [train.py line:73] :    == step: [300/391], train loss: 0.042 | train acc: 98.654% | lr: 0.010000
+[2019-08-09 11:27:52,214] - [train.py line:77] :    == step: [391/391], train loss: 0.042 | train acc: 98.652% | lr: 0.010000
+[2019-08-09 11:27:52,214] - [train.py line:80] :    == cost time: 33.7876s
+[2019-08-09 11:27:52,215] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:27:54,693] - [train.py line:110] :    == test loss: 0.329 | test acc: 91.700%
+[2019-08-09 11:27:54,728] - [train.py line:37] :  === Epoch: [133/250] === 
+[2019-08-09 11:28:03,384] - [train.py line:73] :    == step: [100/391], train loss: 0.039 | train acc: 98.617% | lr: 0.010000
+[2019-08-09 11:28:12,036] - [train.py line:73] :    == step: [200/391], train loss: 0.039 | train acc: 98.629% | lr: 0.010000
+[2019-08-09 11:28:20,558] - [train.py line:73] :    == step: [300/391], train loss: 0.040 | train acc: 98.622% | lr: 0.010000
+[2019-08-09 11:28:28,359] - [train.py line:77] :    == step: [391/391], train loss: 0.041 | train acc: 98.586% | lr: 0.010000
+[2019-08-09 11:28:28,359] - [train.py line:80] :    == cost time: 33.6321s
+[2019-08-09 11:28:28,360] - [train.py line:37] :  === Epoch: [134/250] === 
+[2019-08-09 11:28:37,028] - [train.py line:73] :    == step: [100/391], train loss: 0.043 | train acc: 98.461% | lr: 0.010000
+[2019-08-09 11:28:45,503] - [train.py line:73] :    == step: [200/391], train loss: 0.041 | train acc: 98.598% | lr: 0.010000
+[2019-08-09 11:28:54,175] - [train.py line:73] :    == step: [300/391], train loss: 0.041 | train acc: 98.604% | lr: 0.010000
+[2019-08-09 11:29:02,222] - [train.py line:77] :    == step: [391/391], train loss: 0.041 | train acc: 98.608% | lr: 0.010000
+[2019-08-09 11:29:02,223] - [train.py line:80] :    == cost time: 33.8632s
+[2019-08-09 11:29:02,224] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:29:04,817] - [train.py line:110] :    == test loss: 0.333 | test acc: 91.730%
+[2019-08-09 11:29:04,871] - [train.py line:37] :  === Epoch: [135/250] === 
+[2019-08-09 11:29:13,701] - [train.py line:73] :    == step: [100/391], train loss: 0.043 | train acc: 98.570% | lr: 0.010000
+[2019-08-09 11:29:22,412] - [train.py line:73] :    == step: [200/391], train loss: 0.042 | train acc: 98.578% | lr: 0.010000
+[2019-08-09 11:29:30,837] - [train.py line:73] :    == step: [300/391], train loss: 0.042 | train acc: 98.544% | lr: 0.010000
+[2019-08-09 11:29:38,444] - [train.py line:77] :    == step: [391/391], train loss: 0.043 | train acc: 98.552% | lr: 0.010000
+[2019-08-09 11:29:38,444] - [train.py line:80] :    == cost time: 33.5737s
+[2019-08-09 11:29:38,445] - [train.py line:37] :  === Epoch: [136/250] === 
+[2019-08-09 11:29:46,832] - [train.py line:73] :    == step: [100/391], train loss: 0.039 | train acc: 98.797% | lr: 0.010000
+[2019-08-09 11:30:10,078] - [train.py line:73] :    == step: [200/391], train loss: 0.039 | train acc: 98.746% | lr: 0.010000
+[2019-08-09 11:30:22,021] - [train.py line:73] :    == step: [300/391], train loss: 0.039 | train acc: 98.753% | lr: 0.010000
+[2019-08-09 11:30:30,047] - [train.py line:77] :    == step: [391/391], train loss: 0.039 | train acc: 98.744% | lr: 0.010000
+[2019-08-09 11:30:30,047] - [train.py line:80] :    == cost time: 51.6028s
+[2019-08-09 11:30:30,048] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:30:32,620] - [train.py line:110] :    == test loss: 0.333 | test acc: 91.840%
+[2019-08-09 11:30:33,122] - [train.py line:37] :  === Epoch: [137/250] === 
+[2019-08-09 11:30:41,604] - [train.py line:73] :    == step: [100/391], train loss: 0.040 | train acc: 98.680% | lr: 0.010000
+[2019-08-09 11:30:50,012] - [train.py line:73] :    == step: [200/391], train loss: 0.039 | train acc: 98.660% | lr: 0.010000
+[2019-08-09 11:30:58,379] - [train.py line:73] :    == step: [300/391], train loss: 0.041 | train acc: 98.635% | lr: 0.010000
+[2019-08-09 11:31:05,962] - [train.py line:77] :    == step: [391/391], train loss: 0.041 | train acc: 98.634% | lr: 0.010000
+[2019-08-09 11:31:05,963] - [train.py line:80] :    == cost time: 32.8417s
+[2019-08-09 11:31:05,964] - [train.py line:37] :  === Epoch: [138/250] === 
+[2019-08-09 11:31:14,897] - [train.py line:73] :    == step: [100/391], train loss: 0.035 | train acc: 98.875% | lr: 0.010000
+[2019-08-09 11:31:23,532] - [train.py line:73] :    == step: [200/391], train loss: 0.037 | train acc: 98.781% | lr: 0.010000
+[2019-08-09 11:31:31,920] - [train.py line:73] :    == step: [300/391], train loss: 0.037 | train acc: 98.753% | lr: 0.010000
+[2019-08-09 11:31:39,575] - [train.py line:77] :    == step: [391/391], train loss: 0.037 | train acc: 98.792% | lr: 0.010000
+[2019-08-09 11:31:39,575] - [train.py line:80] :    == cost time: 33.6118s
+[2019-08-09 11:31:39,576] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:31:42,021] - [train.py line:110] :    == test loss: 0.341 | test acc: 91.570%
+[2019-08-09 11:31:42,063] - [train.py line:37] :  === Epoch: [139/250] === 
+[2019-08-09 11:31:50,885] - [train.py line:73] :    == step: [100/391], train loss: 0.036 | train acc: 98.867% | lr: 0.010000
+[2019-08-09 11:31:57,359] - [train.py line:73] :    == step: [200/391], train loss: 0.036 | train acc: 98.855% | lr: 0.010000
+[2019-08-09 11:32:13,585] - [train.py line:73] :    == step: [300/391], train loss: 0.038 | train acc: 98.781% | lr: 0.010000
+[2019-08-09 11:32:21,274] - [train.py line:77] :    == step: [391/391], train loss: 0.038 | train acc: 98.746% | lr: 0.010000
+[2019-08-09 11:32:21,275] - [train.py line:80] :    == cost time: 39.2125s
+[2019-08-09 11:32:21,276] - [train.py line:37] :  === Epoch: [140/250] === 
+[2019-08-09 11:32:30,156] - [train.py line:73] :    == step: [100/391], train loss: 0.035 | train acc: 98.867% | lr: 0.010000
+[2019-08-09 11:32:38,317] - [train.py line:73] :    == step: [200/391], train loss: 0.037 | train acc: 98.789% | lr: 0.010000
+[2019-08-09 11:32:47,006] - [train.py line:73] :    == step: [300/391], train loss: 0.038 | train acc: 98.698% | lr: 0.010000
+[2019-08-09 11:32:54,702] - [train.py line:77] :    == step: [391/391], train loss: 0.038 | train acc: 98.712% | lr: 0.010000
+[2019-08-09 11:32:54,702] - [train.py line:80] :    == cost time: 33.4274s
+[2019-08-09 11:32:54,703] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:32:57,128] - [train.py line:110] :    == test loss: 0.344 | test acc: 91.560%
+[2019-08-09 11:32:57,161] - [train.py line:37] :  === Epoch: [141/250] === 
+[2019-08-09 11:33:05,888] - [train.py line:73] :    == step: [100/391], train loss: 0.034 | train acc: 98.875% | lr: 0.010000
+[2019-08-09 11:33:12,893] - [train.py line:73] :    == step: [200/391], train loss: 0.036 | train acc: 98.754% | lr: 0.010000
+[2019-08-09 11:33:42,280] - [train.py line:73] :    == step: [300/391], train loss: 0.037 | train acc: 98.716% | lr: 0.010000
+[2019-08-09 11:33:49,988] - [train.py line:77] :    == step: [391/391], train loss: 0.038 | train acc: 98.732% | lr: 0.010000
+[2019-08-09 11:33:49,988] - [train.py line:80] :    == cost time: 52.8278s
+[2019-08-09 11:33:49,989] - [train.py line:37] :  === Epoch: [142/250] === 
+[2019-08-09 11:33:58,918] - [train.py line:73] :    == step: [100/391], train loss: 0.039 | train acc: 98.703% | lr: 0.010000
+[2019-08-09 11:34:07,393] - [train.py line:73] :    == step: [200/391], train loss: 0.036 | train acc: 98.836% | lr: 0.010000
+[2019-08-09 11:34:15,585] - [train.py line:73] :    == step: [300/391], train loss: 0.035 | train acc: 98.870% | lr: 0.010000
+[2019-08-09 11:34:23,337] - [train.py line:77] :    == step: [391/391], train loss: 0.035 | train acc: 98.864% | lr: 0.010000
+[2019-08-09 11:34:23,339] - [train.py line:80] :    == cost time: 33.3502s
+[2019-08-09 11:34:23,340] - [train.py line:96] :  === Validate ===
+[2019-08-09 11:34:26,001] - [train.py line:110] :    == test loss: 0.356 | test acc: 91.420%
+[2019-08-09 11:34:26,057] - [train.py line:37] :  === Epoch: [143/250] === 
+[2019-08-09 11:34:34,964] - [train.py line:73] :    == step: [100/391], train loss: 0.037 | train acc: 98.828% | lr: 0.010000
+[2019-08-09 11:34:43,131] - [train.py line:73] :    == step: [200/391], train loss: 0.036 | train acc: 98.840% | lr: 0.010000
+[2019-08-09 11:34:52,002] - [train.py line:73] :    == step: [300/391], train loss: 0.037 | train acc: 98.753% | lr: 0.010000
