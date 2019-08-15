@@ -10,7 +10,7 @@ import torch.backends.cudnn as cudnn
 from autoaugment import CIFAR10Policy
 from easydict import EasyDict
 from models import *
-
+from test import *
 from utils import Logger, count_parameters, data_augmentation, \
     load_checkpoint, get_data_loader, mixup_data, mixup_criterion, \
     save_checkpoint, adjust_learning_rate, get_current_lr, Cutout, cutmix_data, cutmix_criterion
@@ -51,7 +51,13 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
             outputs = net(inputs)
             loss = cutmix_criterion(
                 criterion, outputs, targets_a, targets_b, lam)
-
+        elif config.randmix:
+            holes = get_holes(5)
+            inputs, targets, lams = randmix_data(
+                holes, inputs, targets,  device)
+            outputs = net(inputs)
+            loss = randmix_criterion(
+                criterion, outputs, targets, lams)
         else:
             outputs = net(inputs)
             loss = criterion(outputs, targets)
@@ -70,6 +76,9 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
         if config.mixup or config.cutmix:
             correct += (lam * predicted.eq(targets_a).sum().item()
                         + (1 - lam) * predicted.eq(targets_b).sum().item())
+        elif config.randmix:
+            for i in range(len(holes)):
+                correct+=lam[i]*predicted.eq(targets[i].sum().item())
         else:
             correct += predicted.eq(targets).sum().item()
 
