@@ -26,7 +26,6 @@ logger = Logger(log_file_name=args.work_path + '/log.txt',
 
 
 def train(train_loader, net, criterion, optimizer, epoch, device):
-    
 
     start = time.time()
     net.train()
@@ -38,6 +37,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
 
     for batch_index, (inputs, targets) in enumerate(train_loader):
         # move tensor to GPU
+        targets[]
         inputs, targets = inputs.to(device), targets.to(device)
         if config.mixup:
             inputs, targets_a, targets_b, lam = mixup_data(
@@ -78,7 +78,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
                         + (1 - lam) * predicted.eq(targets_b).sum().item())
         elif config.randmix:
             for i in range(len(holes)):
-                correct+=lam[i]*predicted.eq(targets[i].sum().item())
+                correct+=lam[i]*predicted.eq(targets[i]).sum().item()
         else:
             correct += predicted.eq(targets).sum().item()
 
