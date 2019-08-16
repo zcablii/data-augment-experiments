@@ -241,7 +241,6 @@ def randmix_data(holes, inputs, target, device):
         mask[:, :, y21: y22, x21: x22] = inputs[rand_index, :, y21: y22, x21: x22] 
         lams[i] = get_area(y21, y22, x21, x22)
         tot_area+= lams[i]
-
         if i > 0:
             for k in range (i):
                 y11 = holes[k][0]
@@ -313,7 +312,7 @@ def randmix_data(holes, inputs, target, device):
                 else:
                     continue
 
-    lams=lams/tot_area
+    lams=lams/sum(lams)
     return mask,targets,lams
         
 
