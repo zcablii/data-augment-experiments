@@ -10,10 +10,7 @@ import torch.backends.cudnn as cudnn
 from autoaugment import CIFAR10Policy
 from easydict import EasyDict
 from models import *
-from test import *
-from utils import Logger, count_parameters, data_augmentation, \
-    load_checkpoint, get_data_loader, mixup_data, mixup_criterion, \
-    save_checkpoint, adjust_learning_rate, get_current_lr, Cutout, cutmix_data, cutmix_criterion
+from utils import *
 
 parser = argparse.ArgumentParser(description='PyTorch CIFAR Dataset Training')
 parser.add_argument('--work-path', required=True, type=str)
@@ -26,7 +23,7 @@ logger = Logger(log_file_name=args.work_path + '/log.txt',
 
 
 def train(train_loader, net, criterion, optimizer, epoch, device):
-
+    
     start = time.time()
     net.train()
 
@@ -37,7 +34,6 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
 
     for batch_index, (inputs, targets) in enumerate(train_loader):
         # move tensor to GPU
-        targets[]
         inputs, targets = inputs.to(device), targets.to(device)
         if config.mixup:
             inputs, targets_a, targets_b, lam = mixup_data(
@@ -53,7 +49,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
                 criterion, outputs, targets_a, targets_b, lam)
         elif config.randmix:
             holes = get_holes(5)
-            inputs, targets, lams = randmix_data(
+            inputs, labels, lams = randmix_data(
                 holes, inputs, targets,  device)
             outputs = net(inputs)
             loss = randmix_criterion(
@@ -78,11 +74,11 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
                         + (1 - lam) * predicted.eq(targets_b).sum().item())
         elif config.randmix:
             for i in range(len(holes)):
-                correct+=lam[i]*predicted.eq(targets[i]).sum().item()
+                correct+=lam[i]*predicted.eq(labels[i]).sum().item()
         else:
             correct += predicted.eq(targets).sum().item()
 
-        if (batch_index + 1) % 100 == 0:
+        if (batch_index + 1) % 100 == 1:
             logger.info("   == step: [{:3}/{}], train loss: {:.3f} | train acc: {:6.3f}% | lr: {:.6f}".format(
                 batch_index + 1, len(train_loader),
                 train_loss / (batch_index + 1), 100.0 * correct / total, get_current_lr(optimizer)))

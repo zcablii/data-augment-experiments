@@ -187,7 +187,7 @@ def get_area(y1, y2, x1, x2):
 
 def get_holes(points_num):
     center = (16,16)
-    r = 12
+    r = 3*points_num-3
     perimeter = 2*r*math.pi
     slot=perimeter/points_num
     x_vals=[]
@@ -203,7 +203,8 @@ def get_holes(points_num):
     holes = []
     tot_area = 0
     for i in range(len(x_vals)):
-        length = random.randint(14,20)
+        c = 32-3*points_num
+        length = random.randint(c-3,c+3)
         x = x_vals[i]
         y = y_vals[i]
         y1 = np.clip(y - length // 2, 0, 32)
@@ -239,7 +240,7 @@ def randmix_data(holes, inputs, target, device):
         x21 = holes[i][2]
         x22 = holes[i][3]
         mask[:, :, y21: y22, x21: x22] = inputs[rand_index, :, y21: y22, x21: x22] 
-        lams[i] = get_area(y21, y22, x21, x22)
+        lams.append(get_area(y21, y22, x21, x22))
         tot_area+= lams[i]
         if i > 0:
             for k in range (i):
