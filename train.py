@@ -34,6 +34,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
 
     for batch_index, (inputs, targets) in enumerate(train_loader):
         # move tensor to GPU
+        labels=[]   
         inputs, targets = inputs.to(device), targets.to(device)
         if config.mixup:
             inputs, targets_a, targets_b, lam = mixup_data(
@@ -48,12 +49,12 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
             loss = cutmix_criterion(
                 criterion, outputs, targets_a, targets_b, lam)
         elif config.randmix:
-            holes = get_holes(5)
+            holes = get_holes(2)
             inputs, labels, lams = randmix_data(
                 holes, inputs, targets,  device)
+
             outputs = net(inputs)
-            loss = randmix_criterion(
-                criterion, outputs, targets, lams)
+            loss = randmix_criterion(criterion, outputs, labels, lams)
         else:
             outputs = net(inputs)
             loss = criterion(outputs, targets)
@@ -74,7 +75,7 @@ def train(train_loader, net, criterion, optimizer, epoch, device):
                         + (1 - lam) * predicted.eq(targets_b).sum().item())
         elif config.randmix:
             for i in range(len(holes)):
-                correct+=lam[i]*predicted.eq(labels[i]).sum().item()
+                correct+=lams[i]*predicted.eq(labels[i]).sum().item()
         else:
             correct += predicted.eq(targets).sum().item()
 
